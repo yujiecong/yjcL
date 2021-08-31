@@ -1,0 +1,2081 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ID
+
+Grammar
+
+Rule 0     S' -> expr
+Rule 1     expr -> expr PLUS expr
+Rule 2     expr -> expr MINUS expr
+Rule 3     expr -> expr TIMES expr
+Rule 4     expr -> expr DIVIDE expr
+Rule 5     expr -> expr GT expr
+Rule 6     expr -> expr GE expr
+Rule 7     expr -> expr IE expr
+Rule 8     expr -> expr LE expr
+Rule 9     expr -> expr LT expr
+Rule 10    expr -> expr NE expr
+Rule 11    expr -> expr OR expr
+Rule 12    expr -> expr AND expr
+Rule 13    expr -> NOT expr
+Rule 14    expr -> expr IN expr
+Rule 15    expr -> list
+Rule 16    list -> LIST
+Rule 17    expr -> num
+Rule 18    num -> NUMBER
+Rule 19    expr -> float
+Rule 20    float -> FLOAT
+Rule 21    expr -> str
+Rule 22    str -> STR
+Rule 23    expr -> none
+Rule 24    none -> NONE
+Rule 25    expr -> LPAREN expr RPAREN
+Rule 26    expr -> MINUS expr
+
+Terminals, with rules where they appear
+
+AND                  : 12
+DIVIDE               : 4
+FLOAT                : 20
+GE                   : 6
+GT                   : 5
+ID                   : 
+IE                   : 7
+IN                   : 14
+LE                   : 8
+LIST                 : 16
+LPAREN               : 25
+LT                   : 9
+MINUS                : 2 26
+NE                   : 10
+NONE                 : 24
+NOT                  : 13
+NUMBER               : 18
+OR                   : 11
+PLUS                 : 1
+RPAREN               : 25
+STR                  : 22
+TIMES                : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+expr                 : 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 14 14 25 26 0
+float                : 19
+list                 : 15
+none                 : 23
+num                  : 17
+str                  : 21
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 1
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 1
+
+    (0) S' -> expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+
+state 2
+
+    (26) expr -> MINUS . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 28
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 3
+
+    (13) expr -> NOT . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 29
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 4
+
+    (15) expr -> list .
+
+    PLUS            reduce using rule 15 (expr -> list .)
+    MINUS           reduce using rule 15 (expr -> list .)
+    TIMES           reduce using rule 15 (expr -> list .)
+    DIVIDE          reduce using rule 15 (expr -> list .)
+    GT              reduce using rule 15 (expr -> list .)
+    GE              reduce using rule 15 (expr -> list .)
+    IE              reduce using rule 15 (expr -> list .)
+    LE              reduce using rule 15 (expr -> list .)
+    LT              reduce using rule 15 (expr -> list .)
+    NE              reduce using rule 15 (expr -> list .)
+    OR              reduce using rule 15 (expr -> list .)
+    AND             reduce using rule 15 (expr -> list .)
+    IN              reduce using rule 15 (expr -> list .)
+    $end            reduce using rule 15 (expr -> list .)
+    RPAREN          reduce using rule 15 (expr -> list .)
+
+
+state 5
+
+    (17) expr -> num .
+
+    PLUS            reduce using rule 17 (expr -> num .)
+    MINUS           reduce using rule 17 (expr -> num .)
+    TIMES           reduce using rule 17 (expr -> num .)
+    DIVIDE          reduce using rule 17 (expr -> num .)
+    GT              reduce using rule 17 (expr -> num .)
+    GE              reduce using rule 17 (expr -> num .)
+    IE              reduce using rule 17 (expr -> num .)
+    LE              reduce using rule 17 (expr -> num .)
+    LT              reduce using rule 17 (expr -> num .)
+    NE              reduce using rule 17 (expr -> num .)
+    OR              reduce using rule 17 (expr -> num .)
+    AND             reduce using rule 17 (expr -> num .)
+    IN              reduce using rule 17 (expr -> num .)
+    $end            reduce using rule 17 (expr -> num .)
+    RPAREN          reduce using rule 17 (expr -> num .)
+
+
+state 6
+
+    (19) expr -> float .
+
+    PLUS            reduce using rule 19 (expr -> float .)
+    MINUS           reduce using rule 19 (expr -> float .)
+    TIMES           reduce using rule 19 (expr -> float .)
+    DIVIDE          reduce using rule 19 (expr -> float .)
+    GT              reduce using rule 19 (expr -> float .)
+    GE              reduce using rule 19 (expr -> float .)
+    IE              reduce using rule 19 (expr -> float .)
+    LE              reduce using rule 19 (expr -> float .)
+    LT              reduce using rule 19 (expr -> float .)
+    NE              reduce using rule 19 (expr -> float .)
+    OR              reduce using rule 19 (expr -> float .)
+    AND             reduce using rule 19 (expr -> float .)
+    IN              reduce using rule 19 (expr -> float .)
+    $end            reduce using rule 19 (expr -> float .)
+    RPAREN          reduce using rule 19 (expr -> float .)
+
+
+state 7
+
+    (21) expr -> str .
+
+    PLUS            reduce using rule 21 (expr -> str .)
+    MINUS           reduce using rule 21 (expr -> str .)
+    TIMES           reduce using rule 21 (expr -> str .)
+    DIVIDE          reduce using rule 21 (expr -> str .)
+    GT              reduce using rule 21 (expr -> str .)
+    GE              reduce using rule 21 (expr -> str .)
+    IE              reduce using rule 21 (expr -> str .)
+    LE              reduce using rule 21 (expr -> str .)
+    LT              reduce using rule 21 (expr -> str .)
+    NE              reduce using rule 21 (expr -> str .)
+    OR              reduce using rule 21 (expr -> str .)
+    AND             reduce using rule 21 (expr -> str .)
+    IN              reduce using rule 21 (expr -> str .)
+    $end            reduce using rule 21 (expr -> str .)
+    RPAREN          reduce using rule 21 (expr -> str .)
+
+
+state 8
+
+    (23) expr -> none .
+
+    PLUS            reduce using rule 23 (expr -> none .)
+    MINUS           reduce using rule 23 (expr -> none .)
+    TIMES           reduce using rule 23 (expr -> none .)
+    DIVIDE          reduce using rule 23 (expr -> none .)
+    GT              reduce using rule 23 (expr -> none .)
+    GE              reduce using rule 23 (expr -> none .)
+    IE              reduce using rule 23 (expr -> none .)
+    LE              reduce using rule 23 (expr -> none .)
+    LT              reduce using rule 23 (expr -> none .)
+    NE              reduce using rule 23 (expr -> none .)
+    OR              reduce using rule 23 (expr -> none .)
+    AND             reduce using rule 23 (expr -> none .)
+    IN              reduce using rule 23 (expr -> none .)
+    $end            reduce using rule 23 (expr -> none .)
+    RPAREN          reduce using rule 23 (expr -> none .)
+
+
+state 9
+
+    (25) expr -> LPAREN . expr RPAREN
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 30
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 10
+
+    (16) list -> LIST .
+
+    PLUS            reduce using rule 16 (list -> LIST .)
+    MINUS           reduce using rule 16 (list -> LIST .)
+    TIMES           reduce using rule 16 (list -> LIST .)
+    DIVIDE          reduce using rule 16 (list -> LIST .)
+    GT              reduce using rule 16 (list -> LIST .)
+    GE              reduce using rule 16 (list -> LIST .)
+    IE              reduce using rule 16 (list -> LIST .)
+    LE              reduce using rule 16 (list -> LIST .)
+    LT              reduce using rule 16 (list -> LIST .)
+    NE              reduce using rule 16 (list -> LIST .)
+    OR              reduce using rule 16 (list -> LIST .)
+    AND             reduce using rule 16 (list -> LIST .)
+    IN              reduce using rule 16 (list -> LIST .)
+    $end            reduce using rule 16 (list -> LIST .)
+    RPAREN          reduce using rule 16 (list -> LIST .)
+
+
+state 11
+
+    (18) num -> NUMBER .
+
+    PLUS            reduce using rule 18 (num -> NUMBER .)
+    MINUS           reduce using rule 18 (num -> NUMBER .)
+    TIMES           reduce using rule 18 (num -> NUMBER .)
+    DIVIDE          reduce using rule 18 (num -> NUMBER .)
+    GT              reduce using rule 18 (num -> NUMBER .)
+    GE              reduce using rule 18 (num -> NUMBER .)
+    IE              reduce using rule 18 (num -> NUMBER .)
+    LE              reduce using rule 18 (num -> NUMBER .)
+    LT              reduce using rule 18 (num -> NUMBER .)
+    NE              reduce using rule 18 (num -> NUMBER .)
+    OR              reduce using rule 18 (num -> NUMBER .)
+    AND             reduce using rule 18 (num -> NUMBER .)
+    IN              reduce using rule 18 (num -> NUMBER .)
+    $end            reduce using rule 18 (num -> NUMBER .)
+    RPAREN          reduce using rule 18 (num -> NUMBER .)
+
+
+state 12
+
+    (20) float -> FLOAT .
+
+    PLUS            reduce using rule 20 (float -> FLOAT .)
+    MINUS           reduce using rule 20 (float -> FLOAT .)
+    TIMES           reduce using rule 20 (float -> FLOAT .)
+    DIVIDE          reduce using rule 20 (float -> FLOAT .)
+    GT              reduce using rule 20 (float -> FLOAT .)
+    GE              reduce using rule 20 (float -> FLOAT .)
+    IE              reduce using rule 20 (float -> FLOAT .)
+    LE              reduce using rule 20 (float -> FLOAT .)
+    LT              reduce using rule 20 (float -> FLOAT .)
+    NE              reduce using rule 20 (float -> FLOAT .)
+    OR              reduce using rule 20 (float -> FLOAT .)
+    AND             reduce using rule 20 (float -> FLOAT .)
+    IN              reduce using rule 20 (float -> FLOAT .)
+    $end            reduce using rule 20 (float -> FLOAT .)
+    RPAREN          reduce using rule 20 (float -> FLOAT .)
+
+
+state 13
+
+    (22) str -> STR .
+
+    PLUS            reduce using rule 22 (str -> STR .)
+    MINUS           reduce using rule 22 (str -> STR .)
+    TIMES           reduce using rule 22 (str -> STR .)
+    DIVIDE          reduce using rule 22 (str -> STR .)
+    GT              reduce using rule 22 (str -> STR .)
+    GE              reduce using rule 22 (str -> STR .)
+    IE              reduce using rule 22 (str -> STR .)
+    LE              reduce using rule 22 (str -> STR .)
+    LT              reduce using rule 22 (str -> STR .)
+    NE              reduce using rule 22 (str -> STR .)
+    OR              reduce using rule 22 (str -> STR .)
+    AND             reduce using rule 22 (str -> STR .)
+    IN              reduce using rule 22 (str -> STR .)
+    $end            reduce using rule 22 (str -> STR .)
+    RPAREN          reduce using rule 22 (str -> STR .)
+
+
+state 14
+
+    (24) none -> NONE .
+
+    PLUS            reduce using rule 24 (none -> NONE .)
+    MINUS           reduce using rule 24 (none -> NONE .)
+    TIMES           reduce using rule 24 (none -> NONE .)
+    DIVIDE          reduce using rule 24 (none -> NONE .)
+    GT              reduce using rule 24 (none -> NONE .)
+    GE              reduce using rule 24 (none -> NONE .)
+    IE              reduce using rule 24 (none -> NONE .)
+    LE              reduce using rule 24 (none -> NONE .)
+    LT              reduce using rule 24 (none -> NONE .)
+    NE              reduce using rule 24 (none -> NONE .)
+    OR              reduce using rule 24 (none -> NONE .)
+    AND             reduce using rule 24 (none -> NONE .)
+    IN              reduce using rule 24 (none -> NONE .)
+    $end            reduce using rule 24 (none -> NONE .)
+    RPAREN          reduce using rule 24 (none -> NONE .)
+
+
+state 15
+
+    (1) expr -> expr PLUS . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 31
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 16
+
+    (2) expr -> expr MINUS . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 32
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 17
+
+    (3) expr -> expr TIMES . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 33
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 18
+
+    (4) expr -> expr DIVIDE . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 34
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 19
+
+    (5) expr -> expr GT . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 35
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 20
+
+    (6) expr -> expr GE . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 36
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 21
+
+    (7) expr -> expr IE . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 37
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 22
+
+    (8) expr -> expr LE . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 38
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 23
+
+    (9) expr -> expr LT . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 39
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 24
+
+    (10) expr -> expr NE . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 40
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 25
+
+    (11) expr -> expr OR . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 41
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 26
+
+    (12) expr -> expr AND . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 42
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 27
+
+    (14) expr -> expr IN . expr
+    (1) expr -> . expr PLUS expr
+    (2) expr -> . expr MINUS expr
+    (3) expr -> . expr TIMES expr
+    (4) expr -> . expr DIVIDE expr
+    (5) expr -> . expr GT expr
+    (6) expr -> . expr GE expr
+    (7) expr -> . expr IE expr
+    (8) expr -> . expr LE expr
+    (9) expr -> . expr LT expr
+    (10) expr -> . expr NE expr
+    (11) expr -> . expr OR expr
+    (12) expr -> . expr AND expr
+    (13) expr -> . NOT expr
+    (14) expr -> . expr IN expr
+    (15) expr -> . list
+    (17) expr -> . num
+    (19) expr -> . float
+    (21) expr -> . str
+    (23) expr -> . none
+    (25) expr -> . LPAREN expr RPAREN
+    (26) expr -> . MINUS expr
+    (16) list -> . LIST
+    (18) num -> . NUMBER
+    (20) float -> . FLOAT
+    (22) str -> . STR
+    (24) none -> . NONE
+
+    NOT             shift and go to state 3
+    LPAREN          shift and go to state 9
+    MINUS           shift and go to state 2
+    LIST            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FLOAT           shift and go to state 12
+    STR             shift and go to state 13
+    NONE            shift and go to state 14
+
+    expr                           shift and go to state 43
+    list                           shift and go to state 4
+    num                            shift and go to state 5
+    float                          shift and go to state 6
+    str                            shift and go to state 7
+    none                           shift and go to state 8
+
+state 28
+
+    (26) expr -> MINUS expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    PLUS            reduce using rule 26 (expr -> MINUS expr .)
+    MINUS           reduce using rule 26 (expr -> MINUS expr .)
+    TIMES           reduce using rule 26 (expr -> MINUS expr .)
+    DIVIDE          reduce using rule 26 (expr -> MINUS expr .)
+    GT              reduce using rule 26 (expr -> MINUS expr .)
+    GE              reduce using rule 26 (expr -> MINUS expr .)
+    IE              reduce using rule 26 (expr -> MINUS expr .)
+    LE              reduce using rule 26 (expr -> MINUS expr .)
+    LT              reduce using rule 26 (expr -> MINUS expr .)
+    NE              reduce using rule 26 (expr -> MINUS expr .)
+    OR              reduce using rule 26 (expr -> MINUS expr .)
+    AND             reduce using rule 26 (expr -> MINUS expr .)
+    IN              reduce using rule 26 (expr -> MINUS expr .)
+    $end            reduce using rule 26 (expr -> MINUS expr .)
+    RPAREN          reduce using rule 26 (expr -> MINUS expr .)
+
+  ! PLUS            [ shift and go to state 15 ]
+  ! MINUS           [ shift and go to state 16 ]
+  ! TIMES           [ shift and go to state 17 ]
+  ! DIVIDE          [ shift and go to state 18 ]
+  ! GT              [ shift and go to state 19 ]
+  ! GE              [ shift and go to state 20 ]
+  ! IE              [ shift and go to state 21 ]
+  ! LE              [ shift and go to state 22 ]
+  ! LT              [ shift and go to state 23 ]
+  ! NE              [ shift and go to state 24 ]
+  ! OR              [ shift and go to state 25 ]
+  ! AND             [ shift and go to state 26 ]
+  ! IN              [ shift and go to state 27 ]
+
+
+state 29
+
+    (13) expr -> NOT expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for IE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for NE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IN resolved as shift
+    $end            reduce using rule 13 (expr -> NOT expr .)
+    RPAREN          reduce using rule 13 (expr -> NOT expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+  ! PLUS            [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! MINUS           [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! TIMES           [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! DIVIDE          [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! GT              [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! GE              [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! IE              [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! LE              [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! LT              [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! NE              [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! OR              [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! AND             [ reduce using rule 13 (expr -> NOT expr .) ]
+  ! IN              [ reduce using rule 13 (expr -> NOT expr .) ]
+
+
+state 30
+
+    (25) expr -> LPAREN expr . RPAREN
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    RPAREN          shift and go to state 44
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+
+state 31
+
+    (1) expr -> expr PLUS expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    PLUS            reduce using rule 1 (expr -> expr PLUS expr .)
+    MINUS           reduce using rule 1 (expr -> expr PLUS expr .)
+    GT              reduce using rule 1 (expr -> expr PLUS expr .)
+    GE              reduce using rule 1 (expr -> expr PLUS expr .)
+    IE              reduce using rule 1 (expr -> expr PLUS expr .)
+    LE              reduce using rule 1 (expr -> expr PLUS expr .)
+    LT              reduce using rule 1 (expr -> expr PLUS expr .)
+    NE              reduce using rule 1 (expr -> expr PLUS expr .)
+    OR              reduce using rule 1 (expr -> expr PLUS expr .)
+    AND             reduce using rule 1 (expr -> expr PLUS expr .)
+    IN              reduce using rule 1 (expr -> expr PLUS expr .)
+    $end            reduce using rule 1 (expr -> expr PLUS expr .)
+    RPAREN          reduce using rule 1 (expr -> expr PLUS expr .)
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+
+  ! TIMES           [ reduce using rule 1 (expr -> expr PLUS expr .) ]
+  ! DIVIDE          [ reduce using rule 1 (expr -> expr PLUS expr .) ]
+  ! PLUS            [ shift and go to state 15 ]
+  ! MINUS           [ shift and go to state 16 ]
+  ! GT              [ shift and go to state 19 ]
+  ! GE              [ shift and go to state 20 ]
+  ! IE              [ shift and go to state 21 ]
+  ! LE              [ shift and go to state 22 ]
+  ! LT              [ shift and go to state 23 ]
+  ! NE              [ shift and go to state 24 ]
+  ! OR              [ shift and go to state 25 ]
+  ! AND             [ shift and go to state 26 ]
+  ! IN              [ shift and go to state 27 ]
+
+
+state 32
+
+    (2) expr -> expr MINUS expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    PLUS            reduce using rule 2 (expr -> expr MINUS expr .)
+    MINUS           reduce using rule 2 (expr -> expr MINUS expr .)
+    GT              reduce using rule 2 (expr -> expr MINUS expr .)
+    GE              reduce using rule 2 (expr -> expr MINUS expr .)
+    IE              reduce using rule 2 (expr -> expr MINUS expr .)
+    LE              reduce using rule 2 (expr -> expr MINUS expr .)
+    LT              reduce using rule 2 (expr -> expr MINUS expr .)
+    NE              reduce using rule 2 (expr -> expr MINUS expr .)
+    OR              reduce using rule 2 (expr -> expr MINUS expr .)
+    AND             reduce using rule 2 (expr -> expr MINUS expr .)
+    IN              reduce using rule 2 (expr -> expr MINUS expr .)
+    $end            reduce using rule 2 (expr -> expr MINUS expr .)
+    RPAREN          reduce using rule 2 (expr -> expr MINUS expr .)
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+
+  ! TIMES           [ reduce using rule 2 (expr -> expr MINUS expr .) ]
+  ! DIVIDE          [ reduce using rule 2 (expr -> expr MINUS expr .) ]
+  ! PLUS            [ shift and go to state 15 ]
+  ! MINUS           [ shift and go to state 16 ]
+  ! GT              [ shift and go to state 19 ]
+  ! GE              [ shift and go to state 20 ]
+  ! IE              [ shift and go to state 21 ]
+  ! LE              [ shift and go to state 22 ]
+  ! LT              [ shift and go to state 23 ]
+  ! NE              [ shift and go to state 24 ]
+  ! OR              [ shift and go to state 25 ]
+  ! AND             [ shift and go to state 26 ]
+  ! IN              [ shift and go to state 27 ]
+
+
+state 33
+
+    (3) expr -> expr TIMES expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    PLUS            reduce using rule 3 (expr -> expr TIMES expr .)
+    MINUS           reduce using rule 3 (expr -> expr TIMES expr .)
+    TIMES           reduce using rule 3 (expr -> expr TIMES expr .)
+    DIVIDE          reduce using rule 3 (expr -> expr TIMES expr .)
+    GT              reduce using rule 3 (expr -> expr TIMES expr .)
+    GE              reduce using rule 3 (expr -> expr TIMES expr .)
+    IE              reduce using rule 3 (expr -> expr TIMES expr .)
+    LE              reduce using rule 3 (expr -> expr TIMES expr .)
+    LT              reduce using rule 3 (expr -> expr TIMES expr .)
+    NE              reduce using rule 3 (expr -> expr TIMES expr .)
+    OR              reduce using rule 3 (expr -> expr TIMES expr .)
+    AND             reduce using rule 3 (expr -> expr TIMES expr .)
+    IN              reduce using rule 3 (expr -> expr TIMES expr .)
+    $end            reduce using rule 3 (expr -> expr TIMES expr .)
+    RPAREN          reduce using rule 3 (expr -> expr TIMES expr .)
+
+  ! PLUS            [ shift and go to state 15 ]
+  ! MINUS           [ shift and go to state 16 ]
+  ! TIMES           [ shift and go to state 17 ]
+  ! DIVIDE          [ shift and go to state 18 ]
+  ! GT              [ shift and go to state 19 ]
+  ! GE              [ shift and go to state 20 ]
+  ! IE              [ shift and go to state 21 ]
+  ! LE              [ shift and go to state 22 ]
+  ! LT              [ shift and go to state 23 ]
+  ! NE              [ shift and go to state 24 ]
+  ! OR              [ shift and go to state 25 ]
+  ! AND             [ shift and go to state 26 ]
+  ! IN              [ shift and go to state 27 ]
+
+
+state 34
+
+    (4) expr -> expr DIVIDE expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    PLUS            reduce using rule 4 (expr -> expr DIVIDE expr .)
+    MINUS           reduce using rule 4 (expr -> expr DIVIDE expr .)
+    TIMES           reduce using rule 4 (expr -> expr DIVIDE expr .)
+    DIVIDE          reduce using rule 4 (expr -> expr DIVIDE expr .)
+    GT              reduce using rule 4 (expr -> expr DIVIDE expr .)
+    GE              reduce using rule 4 (expr -> expr DIVIDE expr .)
+    IE              reduce using rule 4 (expr -> expr DIVIDE expr .)
+    LE              reduce using rule 4 (expr -> expr DIVIDE expr .)
+    LT              reduce using rule 4 (expr -> expr DIVIDE expr .)
+    NE              reduce using rule 4 (expr -> expr DIVIDE expr .)
+    OR              reduce using rule 4 (expr -> expr DIVIDE expr .)
+    AND             reduce using rule 4 (expr -> expr DIVIDE expr .)
+    IN              reduce using rule 4 (expr -> expr DIVIDE expr .)
+    $end            reduce using rule 4 (expr -> expr DIVIDE expr .)
+    RPAREN          reduce using rule 4 (expr -> expr DIVIDE expr .)
+
+  ! PLUS            [ shift and go to state 15 ]
+  ! MINUS           [ shift and go to state 16 ]
+  ! TIMES           [ shift and go to state 17 ]
+  ! DIVIDE          [ shift and go to state 18 ]
+  ! GT              [ shift and go to state 19 ]
+  ! GE              [ shift and go to state 20 ]
+  ! IE              [ shift and go to state 21 ]
+  ! LE              [ shift and go to state 22 ]
+  ! LT              [ shift and go to state 23 ]
+  ! NE              [ shift and go to state 24 ]
+  ! OR              [ shift and go to state 25 ]
+  ! AND             [ shift and go to state 26 ]
+  ! IN              [ shift and go to state 27 ]
+
+
+state 35
+
+    (5) expr -> expr GT expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for IE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for NE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IN resolved as shift
+    $end            reduce using rule 5 (expr -> expr GT expr .)
+    RPAREN          reduce using rule 5 (expr -> expr GT expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+  ! PLUS            [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! MINUS           [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! TIMES           [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! DIVIDE          [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! GT              [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! GE              [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! IE              [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! LE              [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! LT              [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! NE              [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! OR              [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! AND             [ reduce using rule 5 (expr -> expr GT expr .) ]
+  ! IN              [ reduce using rule 5 (expr -> expr GT expr .) ]
+
+
+state 36
+
+    (6) expr -> expr GE expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for IE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for NE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IN resolved as shift
+    $end            reduce using rule 6 (expr -> expr GE expr .)
+    RPAREN          reduce using rule 6 (expr -> expr GE expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+  ! PLUS            [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! MINUS           [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! TIMES           [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! DIVIDE          [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! GT              [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! GE              [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! IE              [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! LE              [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! LT              [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! NE              [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! OR              [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! AND             [ reduce using rule 6 (expr -> expr GE expr .) ]
+  ! IN              [ reduce using rule 6 (expr -> expr GE expr .) ]
+
+
+state 37
+
+    (7) expr -> expr IE expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for IE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for NE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IN resolved as shift
+    $end            reduce using rule 7 (expr -> expr IE expr .)
+    RPAREN          reduce using rule 7 (expr -> expr IE expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+  ! PLUS            [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! MINUS           [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! TIMES           [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! DIVIDE          [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! GT              [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! GE              [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! IE              [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! LE              [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! LT              [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! NE              [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! OR              [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! AND             [ reduce using rule 7 (expr -> expr IE expr .) ]
+  ! IN              [ reduce using rule 7 (expr -> expr IE expr .) ]
+
+
+state 38
+
+    (8) expr -> expr LE expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for IE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for NE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IN resolved as shift
+    $end            reduce using rule 8 (expr -> expr LE expr .)
+    RPAREN          reduce using rule 8 (expr -> expr LE expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+  ! PLUS            [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! MINUS           [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! TIMES           [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! DIVIDE          [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! GT              [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! GE              [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! IE              [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! LE              [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! LT              [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! NE              [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! OR              [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! AND             [ reduce using rule 8 (expr -> expr LE expr .) ]
+  ! IN              [ reduce using rule 8 (expr -> expr LE expr .) ]
+
+
+state 39
+
+    (9) expr -> expr LT expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for IE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for NE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IN resolved as shift
+    $end            reduce using rule 9 (expr -> expr LT expr .)
+    RPAREN          reduce using rule 9 (expr -> expr LT expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+  ! PLUS            [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! MINUS           [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! TIMES           [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! DIVIDE          [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! GT              [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! GE              [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! IE              [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! LE              [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! LT              [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! NE              [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! OR              [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! AND             [ reduce using rule 9 (expr -> expr LT expr .) ]
+  ! IN              [ reduce using rule 9 (expr -> expr LT expr .) ]
+
+
+state 40
+
+    (10) expr -> expr NE expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for IE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for NE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IN resolved as shift
+    $end            reduce using rule 10 (expr -> expr NE expr .)
+    RPAREN          reduce using rule 10 (expr -> expr NE expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+  ! PLUS            [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! MINUS           [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! TIMES           [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! DIVIDE          [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! GT              [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! GE              [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! IE              [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! LE              [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! LT              [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! NE              [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! OR              [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! AND             [ reduce using rule 10 (expr -> expr NE expr .) ]
+  ! IN              [ reduce using rule 10 (expr -> expr NE expr .) ]
+
+
+state 41
+
+    (11) expr -> expr OR expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    GT              reduce using rule 11 (expr -> expr OR expr .)
+    GE              reduce using rule 11 (expr -> expr OR expr .)
+    IE              reduce using rule 11 (expr -> expr OR expr .)
+    LE              reduce using rule 11 (expr -> expr OR expr .)
+    LT              reduce using rule 11 (expr -> expr OR expr .)
+    NE              reduce using rule 11 (expr -> expr OR expr .)
+    OR              reduce using rule 11 (expr -> expr OR expr .)
+    AND             reduce using rule 11 (expr -> expr OR expr .)
+    IN              reduce using rule 11 (expr -> expr OR expr .)
+    $end            reduce using rule 11 (expr -> expr OR expr .)
+    RPAREN          reduce using rule 11 (expr -> expr OR expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+
+  ! PLUS            [ reduce using rule 11 (expr -> expr OR expr .) ]
+  ! MINUS           [ reduce using rule 11 (expr -> expr OR expr .) ]
+  ! TIMES           [ reduce using rule 11 (expr -> expr OR expr .) ]
+  ! DIVIDE          [ reduce using rule 11 (expr -> expr OR expr .) ]
+  ! GT              [ shift and go to state 19 ]
+  ! GE              [ shift and go to state 20 ]
+  ! IE              [ shift and go to state 21 ]
+  ! LE              [ shift and go to state 22 ]
+  ! LT              [ shift and go to state 23 ]
+  ! NE              [ shift and go to state 24 ]
+  ! OR              [ shift and go to state 25 ]
+  ! AND             [ shift and go to state 26 ]
+  ! IN              [ shift and go to state 27 ]
+
+
+state 42
+
+    (12) expr -> expr AND expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+    GT              reduce using rule 12 (expr -> expr AND expr .)
+    GE              reduce using rule 12 (expr -> expr AND expr .)
+    IE              reduce using rule 12 (expr -> expr AND expr .)
+    LE              reduce using rule 12 (expr -> expr AND expr .)
+    LT              reduce using rule 12 (expr -> expr AND expr .)
+    NE              reduce using rule 12 (expr -> expr AND expr .)
+    OR              reduce using rule 12 (expr -> expr AND expr .)
+    AND             reduce using rule 12 (expr -> expr AND expr .)
+    IN              reduce using rule 12 (expr -> expr AND expr .)
+    $end            reduce using rule 12 (expr -> expr AND expr .)
+    RPAREN          reduce using rule 12 (expr -> expr AND expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+
+  ! PLUS            [ reduce using rule 12 (expr -> expr AND expr .) ]
+  ! MINUS           [ reduce using rule 12 (expr -> expr AND expr .) ]
+  ! TIMES           [ reduce using rule 12 (expr -> expr AND expr .) ]
+  ! DIVIDE          [ reduce using rule 12 (expr -> expr AND expr .) ]
+  ! GT              [ shift and go to state 19 ]
+  ! GE              [ shift and go to state 20 ]
+  ! IE              [ shift and go to state 21 ]
+  ! LE              [ shift and go to state 22 ]
+  ! LT              [ shift and go to state 23 ]
+  ! NE              [ shift and go to state 24 ]
+  ! OR              [ shift and go to state 25 ]
+  ! AND             [ shift and go to state 26 ]
+  ! IN              [ shift and go to state 27 ]
+
+
+state 43
+
+    (14) expr -> expr IN expr .
+    (1) expr -> expr . PLUS expr
+    (2) expr -> expr . MINUS expr
+    (3) expr -> expr . TIMES expr
+    (4) expr -> expr . DIVIDE expr
+    (5) expr -> expr . GT expr
+    (6) expr -> expr . GE expr
+    (7) expr -> expr . IE expr
+    (8) expr -> expr . LE expr
+    (9) expr -> expr . LT expr
+    (10) expr -> expr . NE expr
+    (11) expr -> expr . OR expr
+    (12) expr -> expr . AND expr
+    (14) expr -> expr . IN expr
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for IE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for NE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for IN resolved as shift
+    $end            reduce using rule 14 (expr -> expr IN expr .)
+    RPAREN          reduce using rule 14 (expr -> expr IN expr .)
+    PLUS            shift and go to state 15
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    GT              shift and go to state 19
+    GE              shift and go to state 20
+    IE              shift and go to state 21
+    LE              shift and go to state 22
+    LT              shift and go to state 23
+    NE              shift and go to state 24
+    OR              shift and go to state 25
+    AND             shift and go to state 26
+    IN              shift and go to state 27
+
+  ! PLUS            [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! MINUS           [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! TIMES           [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! DIVIDE          [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! GT              [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! GE              [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! IE              [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! LE              [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! LT              [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! NE              [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! OR              [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! AND             [ reduce using rule 14 (expr -> expr IN expr .) ]
+  ! IN              [ reduce using rule 14 (expr -> expr IN expr .) ]
+
+
+state 44
+
+    (25) expr -> LPAREN expr RPAREN .
+
+    PLUS            reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    MINUS           reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    TIMES           reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    DIVIDE          reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    GT              reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    GE              reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    IE              reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    LE              reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    LT              reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    NE              reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    OR              reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    AND             reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    IN              reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    $end            reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 25 (expr -> LPAREN expr RPAREN .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 29 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 29 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 29 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 29 resolved as shift
+WARNING: shift/reduce conflict for GT in state 29 resolved as shift
+WARNING: shift/reduce conflict for GE in state 29 resolved as shift
+WARNING: shift/reduce conflict for IE in state 29 resolved as shift
+WARNING: shift/reduce conflict for LE in state 29 resolved as shift
+WARNING: shift/reduce conflict for LT in state 29 resolved as shift
+WARNING: shift/reduce conflict for NE in state 29 resolved as shift
+WARNING: shift/reduce conflict for OR in state 29 resolved as shift
+WARNING: shift/reduce conflict for AND in state 29 resolved as shift
+WARNING: shift/reduce conflict for IN in state 29 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 35 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 35 resolved as shift
+WARNING: shift/reduce conflict for GT in state 35 resolved as shift
+WARNING: shift/reduce conflict for GE in state 35 resolved as shift
+WARNING: shift/reduce conflict for IE in state 35 resolved as shift
+WARNING: shift/reduce conflict for LE in state 35 resolved as shift
+WARNING: shift/reduce conflict for LT in state 35 resolved as shift
+WARNING: shift/reduce conflict for NE in state 35 resolved as shift
+WARNING: shift/reduce conflict for OR in state 35 resolved as shift
+WARNING: shift/reduce conflict for AND in state 35 resolved as shift
+WARNING: shift/reduce conflict for IN in state 35 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 36 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 36 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 36 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 36 resolved as shift
+WARNING: shift/reduce conflict for GT in state 36 resolved as shift
+WARNING: shift/reduce conflict for GE in state 36 resolved as shift
+WARNING: shift/reduce conflict for IE in state 36 resolved as shift
+WARNING: shift/reduce conflict for LE in state 36 resolved as shift
+WARNING: shift/reduce conflict for LT in state 36 resolved as shift
+WARNING: shift/reduce conflict for NE in state 36 resolved as shift
+WARNING: shift/reduce conflict for OR in state 36 resolved as shift
+WARNING: shift/reduce conflict for AND in state 36 resolved as shift
+WARNING: shift/reduce conflict for IN in state 36 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 37 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 37 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 37 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 37 resolved as shift
+WARNING: shift/reduce conflict for GT in state 37 resolved as shift
+WARNING: shift/reduce conflict for GE in state 37 resolved as shift
+WARNING: shift/reduce conflict for IE in state 37 resolved as shift
+WARNING: shift/reduce conflict for LE in state 37 resolved as shift
+WARNING: shift/reduce conflict for LT in state 37 resolved as shift
+WARNING: shift/reduce conflict for NE in state 37 resolved as shift
+WARNING: shift/reduce conflict for OR in state 37 resolved as shift
+WARNING: shift/reduce conflict for AND in state 37 resolved as shift
+WARNING: shift/reduce conflict for IN in state 37 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 38 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 38 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 38 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 38 resolved as shift
+WARNING: shift/reduce conflict for GT in state 38 resolved as shift
+WARNING: shift/reduce conflict for GE in state 38 resolved as shift
+WARNING: shift/reduce conflict for IE in state 38 resolved as shift
+WARNING: shift/reduce conflict for LE in state 38 resolved as shift
+WARNING: shift/reduce conflict for LT in state 38 resolved as shift
+WARNING: shift/reduce conflict for NE in state 38 resolved as shift
+WARNING: shift/reduce conflict for OR in state 38 resolved as shift
+WARNING: shift/reduce conflict for AND in state 38 resolved as shift
+WARNING: shift/reduce conflict for IN in state 38 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 39 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 39 resolved as shift
+WARNING: shift/reduce conflict for GT in state 39 resolved as shift
+WARNING: shift/reduce conflict for GE in state 39 resolved as shift
+WARNING: shift/reduce conflict for IE in state 39 resolved as shift
+WARNING: shift/reduce conflict for LE in state 39 resolved as shift
+WARNING: shift/reduce conflict for LT in state 39 resolved as shift
+WARNING: shift/reduce conflict for NE in state 39 resolved as shift
+WARNING: shift/reduce conflict for OR in state 39 resolved as shift
+WARNING: shift/reduce conflict for AND in state 39 resolved as shift
+WARNING: shift/reduce conflict for IN in state 39 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 40 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 40 resolved as shift
+WARNING: shift/reduce conflict for GT in state 40 resolved as shift
+WARNING: shift/reduce conflict for GE in state 40 resolved as shift
+WARNING: shift/reduce conflict for IE in state 40 resolved as shift
+WARNING: shift/reduce conflict for LE in state 40 resolved as shift
+WARNING: shift/reduce conflict for LT in state 40 resolved as shift
+WARNING: shift/reduce conflict for NE in state 40 resolved as shift
+WARNING: shift/reduce conflict for OR in state 40 resolved as shift
+WARNING: shift/reduce conflict for AND in state 40 resolved as shift
+WARNING: shift/reduce conflict for IN in state 40 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 43 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 43 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 43 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 43 resolved as shift
+WARNING: shift/reduce conflict for GT in state 43 resolved as shift
+WARNING: shift/reduce conflict for GE in state 43 resolved as shift
+WARNING: shift/reduce conflict for IE in state 43 resolved as shift
+WARNING: shift/reduce conflict for LE in state 43 resolved as shift
+WARNING: shift/reduce conflict for LT in state 43 resolved as shift
+WARNING: shift/reduce conflict for NE in state 43 resolved as shift
+WARNING: shift/reduce conflict for OR in state 43 resolved as shift
+WARNING: shift/reduce conflict for AND in state 43 resolved as shift
+WARNING: shift/reduce conflict for IN in state 43 resolved as shift

@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 '''
@@ -8,3 +9,8 @@
 @Author   :yujiecong
 @Date     :2021/8/31 17:10 
 '''
+from restart.VariableDict import VariableDict
+
+
+class GlobalVariable:
+    __var__=VariableDict()
