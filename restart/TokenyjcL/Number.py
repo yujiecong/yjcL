@@ -8,11 +8,11 @@
 @Author   :yujiecong
 @Date     :2021/8/31 15:39 
 '''
-from restart.TokenyjcL.Token_yjcL import TokenyjcL
+from restart.TokenyjcL.Token import Token_yjcL
 
 
-class Number(TokenyjcL):
-    def __init__(self,value):
-        self.type_="NUMBER"
-        self.value=value
+class Number_yjcL(Token_yjcL):
+    def __init__(self, valueDict):
+        self.type_=valueDict["type"]
+        self.value=valueDict["value"]
 

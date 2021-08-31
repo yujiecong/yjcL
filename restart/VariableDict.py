@@ -6,7 +6,7 @@ class VariableDict(dict):
         super(VariableDict, self).__init__()
 
     def __setitem__(self, key, value):
-        print("你赋值了一个屑变量 %s=%s"%(key,value))
+        # print("你赋值了一个屑变量 %s=%s"%(key,value))
         self.__dict__[key]=value
 
     def __getitem__(self, item):

@@ -19,3 +19,9 @@ class FileContent_yjcL(SourceCode_yjcL):
 
     def addChild(self, statement):
         self.children.append(statement)
+
+    def printChildren(self):
+        for child in self.children:
+            print(child)
+    def __getitem__(self, item):
+        return self.children[item]

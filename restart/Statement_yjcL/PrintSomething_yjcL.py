@@ -14,6 +14,9 @@ from restart.Enum.Enum import StatementType, TokenType, ExpressionType
 import restart.Global.Variable
 from restart.ExpressionyjcL.BinaryOperation_yjcL import BinaryOperation_yjcL
 from restart.Statement_yjcL.Statement_yjcL import Statement_yjcL
+from restart.TokenyjcL.Identifier import Identifier_yjcL
+from restart.TokenyjcL.Number import Number_yjcL
+from restart.TokenyjcL.String import String_yjcL
 
 
 class PrintSomething_yjcL(Statement_yjcL):
@@ -21,7 +24,7 @@ class PrintSomething_yjcL(Statement_yjcL):
         super(PrintSomething_yjcL, self).__init__()
         self.raw=value
         self.type_=StatementType.PrintSomething
-        self.resolve()
+
 
 
     def resolve(self):
@@ -31,18 +34,27 @@ class PrintSomething_yjcL(Statement_yjcL):
         self.printKey=self.raw["print_key"]
         self.printChar=self.printKey["value"]
 
-        if printType==TokenType.String or printType==TokenType.Number:
-            self.printValue = printWhat["value"]
+
+        if printType==TokenType.String:
+            printedClass=String_yjcL(printWhat)
+            self.printValue = printedClass.value
+
+        elif printType==TokenType.Number:
+            printedClass=Number_yjcL(printWhat)
+            self.printValue = printedClass.value
+
         elif printType==TokenType.Identifier:
-            printValue = printWhat["value"]
-            self.printValue=restart.Global.Variable.GlobalVariable.__var__[printValue]
+            printedClass=Identifier_yjcL(printWhat)
+            self.printValue=printedClass.value
         elif printType == ExpressionType.BinaryOperation:
-            op=BinaryOperation_yjcL(printWhat)
-
-            self.printValue=op.value
-            self.children.append(op)
-
+            printedClass=BinaryOperation_yjcL(printWhat)
+            self.printValue=printedClass.value
+        else:
+            printedClass=object()
         print(self)
+        self.children.append(printedClass)
+
+
 
     def __repr__(self):
         return "屑%s >> %s"%(self.printChar,self.printValue)

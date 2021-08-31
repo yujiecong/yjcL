@@ -8,10 +8,11 @@
 @Author   :yujiecong
 @Date     :2021/8/31 15:39 
 '''
-from restart.TokenyjcL.Token_yjcL import TokenyjcL
+from restart.TokenyjcL.Token import Token_yjcL
 
 
-class Identifier(TokenyjcL):
-    def __init__(self,value):
-        self.type_="Identifier"
-        self.value=value
+class Identifier_yjcL(Token_yjcL):
+    def __init__(self,valueDict):
+
+        self.value=valueDict["value"]
+        self.type_ = valueDict["type"]

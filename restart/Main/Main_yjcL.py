@@ -2,7 +2,7 @@ import json
 import pprint
 
 from Parser_yjcL import *
-from restart.Enum.Enum import TokenType
+from restart.Enum.Enum import TokenType, ConditionalType
 from restart.FileContent_yjcL.FileContent_yjcL import FileContent_yjcL
 from restart.Statement_yjcL.Assignment_yjcL import Assignment_yjcL
 from restart.Statement_yjcL.PrintSomething_yjcL import PrintSomething_yjcL
@@ -38,13 +38,12 @@ class yjcLAST():
             json.dump(self.astJson, f, sort_keys=True, indent=4)
 
         self.fileContent = FileContent_yjcL()
-        self.asTree = self.dict2AST(self.astJson["value"])
-
-        # self.exec(self.astJson["value"])
+        self.fileContent.children=self.json2ASObjectTree(self.astJson["value"],[])
+        self.exec()
 
         # pprint.pprint(self.astJson)
 
-    def dict2AST(self, ast):
+    def json2ASObjectTree(self, ast,objs,recursion=False):
         """
         根据json构建对象树 递归定义
         :return:
@@ -61,16 +60,22 @@ class yjcLAST():
             elif statementType == StatementType.Assignment:
                 statementObject = Assignment_yjcL(statement)
             elif statementType == StatementType.Something_Conditional:
+                # pprint.pprint(statement)
                 statementObject = Something_Conditional_yjcL(statement)
-                if statementObject.condition_judge:
-                    self.dict2AST(statementObject.subCode)
-            self.fileContent.addChild(statementObject)
+                statementObject.statementObjects=self.json2ASObjectTree(statementObject.subCode, [], recursion=True)
 
-    def exec(self, ast):
+            objs.append(statementObject)
+        return objs
+
+    def exec(self):
         """
-        根据ast执行代码
+        根据ast给出的statement执行代码
         :return:
         """
+        for statement in self.fileContent:
+            statement.resolve()
+            print(statement)
+
 
 
 if __name__ == "__main__":

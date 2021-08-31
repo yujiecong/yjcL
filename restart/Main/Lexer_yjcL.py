@@ -5,13 +5,11 @@ lex.eof = False
 reserved={
     "打印":"PRINT",
     "当":"WHILE",
+    "while":"WHILE",
     "若":"IF",
     "if":"IF",
     "如果":"IF",
     "要是":"IF",
-
-
-
 }
 tokens=[
     "IDENTIFIER",

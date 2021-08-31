@@ -10,11 +10,15 @@
 '''
 import abc
 
-from restart.Enum.Enum import StatementType, TokenType, ExpressionType
+
 
 
 class Statement_yjcL(abc.ABC):
     def __init__(self):
-        # self.value=None
-        # self.type_ = StatementType.Statement
+        self.value=None
+        self.type_ = None
         self.children=[]
+
+    @abc.abstractmethod
+    def resolve(self):
+        pass

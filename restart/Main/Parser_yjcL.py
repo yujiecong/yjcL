@@ -24,7 +24,8 @@ def p_sourcecode(p):
 
 def p_FileContent(p):
     '''FileContent : FileContent Statement
-            | Statement'''
+            | Statement
+            | empty'''
     if len(p)==3:
         p[1]["value"].append(p[2])
         p[0]=p[1]
@@ -34,6 +35,10 @@ def p_FileContent(p):
             "value":[p[1]]
         }
 
+
+def p_empty(p):
+    'empty :'
+    p[0]=None
 def p_statement(p):
     """Statement : Assignment
                 | PrintSomething
@@ -49,7 +54,8 @@ def p_assignment(p):
     idDict = p[1]
     exprDict = p[3]
     p[0] = {
-        "value": (idDict["value"],exprDict["value"]),
+        "identifier": idDict,
+        "expression":exprDict,
         "type": "Assignment"
     }
 
@@ -68,6 +74,7 @@ def p_conditional_expression(p):
         "condition_judge":p[2]
     }
 
+
 def p_binary_opeartion(p):
     """ Expression : Expression PLUS Expression
                 | Expression MINUS Expression
@@ -82,16 +89,6 @@ def p_binary_opeartion(p):
     valueDict["right"] = valueDictRight
     valueDict["op"] = p[2]
     valueDict["type"] = "BinaryOperation"
-
-    # op=p[2]
-    # if op=="+":
-    #     valueDict["result"]=p[1]+p[3]
-    # if op=="-":
-    #     valueDict["result"]=p[1]-p[3]
-    # if op == "*":
-    #     valueDict["result"] = p[1] * p[3]
-    # if op=="/":
-    #     valueDict["result"]=p[1]/p[3]
 
     p[0] = valueDict
 

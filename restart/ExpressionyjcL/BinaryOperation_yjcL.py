@@ -10,9 +10,10 @@
 '''
 import pprint
 
+
 from restart.Enum.Enum import ExpressionType
 from restart.ExpressionyjcL.Expression_yjcL import Expression_yjcL
-from restart.TokenyjcL.Token_yjcL import TokenyjcL
+from restart.TokenyjcL.Token import Token_yjcL
 
 
 class BinaryOperation_yjcL(Expression_yjcL):
@@ -50,15 +51,16 @@ class BinaryOperation_yjcL(Expression_yjcL):
         if lType==ExpressionType.BinaryOperation :
             lValue= self.getValue(left)
         else:
-            lValue=left["value"]
+            lValue = Token_yjcL.getValue(left)
         if  rType==ExpressionType.BinaryOperation:
             rValue= self.getValue(right)
         else:
-            rValue=right["value"]
+            rValue = Token_yjcL.getValue(right)
+        # print(left, right)
+        # lValue=Token_yjcL.getValue(left)
+        # rValue=Token_yjcL.getValue(right)
 
-        # lValue=TokenyjcL.getValue(left)
-        # rValue=TokenyjcL.getValue(right)
-        print(lValue,rValue)
+
         if op=="+":
             resultValue=lValue+rValue
         elif op=="-":
@@ -71,9 +73,11 @@ class BinaryOperation_yjcL(Expression_yjcL):
         return resultValue
 
 
-
     def __repr__(self):
         return self.value
 
+    @staticmethod
+    def getBinaryOperationValue(valueDict):
 
+        return BinaryOperation_yjcL(valueDict).value
 

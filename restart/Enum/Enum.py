@@ -12,9 +12,14 @@
 class Source:
     SourceCode="SourceCode"
 
+class ConditionalType:
+    If="IF"
+    While="WHILE"
+
 class ExpressionType:
     BinaryOperation="BinaryOperation"
     Expression="Expression"
+
 class StatementType:
     Statement="Statement"
     PrintSomething="PrintSomething"

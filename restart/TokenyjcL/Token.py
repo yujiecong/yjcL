@@ -4,15 +4,16 @@
 @IDE      :PyCharm
 @Project  :yjcL 
 @USER     :yanyin
-@File     :Token_yjcL.py
+@File     :Token.py
 @Author   :yujiecong
 @Date     :2021/8/31 15:38 
 '''
 import restart.Global.Variable
-from restart.Enum.Enum import TokenType
+from restart.Enum.Enum import TokenType, ExpressionType
 
 
-class TokenyjcL:
+
+class Token_yjcL:
     @staticmethod
     def getValue(valueDict):
         type_=valueDict["type"]
@@ -20,8 +21,8 @@ class TokenyjcL:
 
         if type_==TokenType.String:
             return value
-        if type_==TokenType.Number:
+        elif type_==TokenType.Number:
             return value
-        if type_==TokenType.Identifier:
+        elif type_==TokenType.Identifier:
             return restart.Global.Variable.GlobalVariable.__var__[value]
 
