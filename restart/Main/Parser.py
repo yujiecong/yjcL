@@ -1,6 +1,6 @@
 
-from Lexer_yjcL import *
-from restart.Enum.Enum import StatementType
+from Lexer import *
+from restart.Enum.Enum import StatementType, ConditionalType
 
 precedence = (
     ('left', 'PLUS', 'MINUS'),
@@ -59,6 +59,7 @@ def p_for(p):
     """ForLoop : FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET"""
 
     p[0]={
+        "for_char":p[1],
         "identifier":p[2],
         "expression":p[4],
         "type":StatementType.ForLoop,
@@ -66,9 +67,8 @@ def p_for(p):
 
     }
 
-
 def p_assignment(p):
-    "Assignment : IDENTIFIER EQUAL Expression"
+    "Assignment : IDENTIFIER ASSIGNMENT Expression"
     idDict = p[1]
     exprDict = p[3]
     p[0] = {
@@ -81,23 +81,44 @@ def p_assignment(p):
 def p_conditional_expression(p):
     """Something_Conditional : IF Expression  LEFT_BRACKET FileContent RIGHT_BRACKET
                     | WHILE Expression  LEFT_BRACKET FileContent RIGHT_BRACKET
+                    | FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
                     """
 
     condition = p[1]
+    if len(p)==6:
+        judge= p[2]
+        p[0] = {
+            "type": StatementType.Something_Conditional,
+            "value": p[4],
+            "condition_type": condition,
+            "condition_judge": judge
+        }
+    elif len(p)==5:
+        if condition["type"]==ConditionalType.ForeverLoop:
+            judge={"type":"NUMBER","value":1}
+            p[0] = {
+                "type": StatementType.Something_Conditional,
+                "value": p[3],
+                "condition_type": condition,
+                "condition_judge": judge
+            }
 
-    p[0] = {
-        "type": StatementType.Something_Conditional,
-        "value": p[4],
-        "condition_type": condition,
-        "condition_judge": p[2]
-    }
+
+    print(p[0])
 
 
 def p_binary_opeartion(p):
     """ Expression : Expression PLUS Expression
                 | Expression MINUS Expression
                 | Expression TIMES Expression
-                | Expression DIVIDE Expression"""
+                | Expression DIVIDE Expression
+                | Expression GREAT_THAN Expression
+                | Expression LOWER_THAN Expression
+                | Expression GREAT_EQUAL Expression
+                | Expression LOWER_EQUAL Expression
+                | Expression EQUAL Expression
+                | Expression NOT_EQUAL Expression"""
+
     valueDict = {}
     valueDictLeft = p[1]
     valueDictRight = p[3]
@@ -114,6 +135,7 @@ def p_expression(p):
     """Expression : NUMBER
                  | STRING
                  | IDENTIFIER
+                 | FLOAT
                  | LEFT_PAREN Expression RIGHT_PAREN
                  """
 

@@ -8,8 +8,8 @@
 @Author   :yujiecong
 @Date     :2021/8/31 16:08 
 '''
-from restart.SourceCode_yjcL.SourceCode_yjcL import SourceCode_yjcL
-from restart.VariableDict import VariableDict
+from restart.SourceCode_yjcL.SourceCode import SourceCode_yjcL
+from restart.DataStructure.VariableDict import VariableDict
 
 
 class FileContent_yjcL(SourceCode_yjcL):

@@ -1,13 +1,13 @@
 import json
 import pprint
 
-from Parser_yjcL import *
-from restart.Enum.Enum import TokenType, ConditionalType
+from Parser import *
+from restart.Enum.Enum import TokenType, ConditionalType, StatementType
 from restart.FileContent_yjcL.FileContent_yjcL import FileContent_yjcL
-from restart.Statement_yjcL.Assignment_yjcL import Assignment_yjcL
-from restart.Statement_yjcL.ForLoop_yjcL import ForLoop_yjcL
-from restart.Statement_yjcL.PrintSomething_yjcL import PrintSomething_yjcL
-from restart.Statement_yjcL.Something_Conditional_yjcL import Something_Conditional_yjcL
+from restart.Statement_yjcL.Assignment import Assignment_yjcL
+from restart.Statement_yjcL.ForLoop import ForLoop_yjcL
+from restart.Statement_yjcL.PrintSomething import PrintSomething_yjcL
+from restart.Statement_yjcL.SomethingConditional import SomethingConditional_yjcL
 from restart.Statement_yjcL.Statement_yjcL import Statement_yjcL
 
 
@@ -49,7 +49,9 @@ class yjcLAST():
         根据json构建对象树 递归定义
         :return:
         """
-
+        if not ast:
+            print("屑代码")
+            return []
         statements = ast["value"]
         # pprint.pprint(statements)
         for statement in statements:
@@ -62,10 +64,12 @@ class yjcLAST():
                 statementObject = Assignment_yjcL(statement)
             elif statementType == StatementType.Something_Conditional:
                 # pprint.pprint(statement)
-                statementObject = Something_Conditional_yjcL(statement)
-                statementObject.statementObjects=self.json2ASObjectTree(statementObject.subCode, [], recursion=True)
+                statementObject = SomethingConditional_yjcL(statement)
+                statementObject.statementObjects=self.json2ASObjectTree(statementObject.fileContent, [], recursion=True)
             elif statementType==StatementType.ForLoop:
                 statementObject=ForLoop_yjcL(statement)
+                statementObject.statementObjects=self.json2ASObjectTree(statementObject.fileContent, [], recursion=True)
+
             objs.append(statementObject)
         return objs
 
