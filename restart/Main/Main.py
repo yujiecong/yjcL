@@ -5,6 +5,7 @@ from Parser_yjcL import *
 from restart.Enum.Enum import TokenType, ConditionalType
 from restart.FileContent_yjcL.FileContent_yjcL import FileContent_yjcL
 from restart.Statement_yjcL.Assignment_yjcL import Assignment_yjcL
+from restart.Statement_yjcL.ForLoop_yjcL import ForLoop_yjcL
 from restart.Statement_yjcL.PrintSomething_yjcL import PrintSomething_yjcL
 from restart.Statement_yjcL.Something_Conditional_yjcL import Something_Conditional_yjcL
 from restart.Statement_yjcL.Statement_yjcL import Statement_yjcL
@@ -63,7 +64,8 @@ class yjcLAST():
                 # pprint.pprint(statement)
                 statementObject = Something_Conditional_yjcL(statement)
                 statementObject.statementObjects=self.json2ASObjectTree(statementObject.subCode, [], recursion=True)
-
+            elif statementType==StatementType.ForLoop:
+                statementObject=ForLoop_yjcL(statement)
             objs.append(statementObject)
         return objs
 
@@ -74,7 +76,7 @@ class yjcLAST():
         """
         for statement in self.fileContent:
             statement.resolve()
-            print(statement)
+            # print(statement)
 
 
 

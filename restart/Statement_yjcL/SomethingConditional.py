@@ -20,7 +20,7 @@ class Something_Conditional_yjcL(Statement_yjcL):
     def __init__(self, value):
         self.value = value
         self.type_ = StatementType.Something_Conditional
-        self.subCode = self.value["value"]
+        self.fileContent = self.value["value"]
         self.statementObjects = []
 
     def resolve(self):
@@ -42,13 +42,12 @@ class Something_Conditional_yjcL(Statement_yjcL):
                 "直到conditionJudge失效才不执行"
                 while self.conditionJudge:
                     for obj in self.statementObjects:
-
                         obj.resolve()
                         # print(obj)
                     self.conditionJudge= Token_yjcL.getValue(self.value["condition_judge"])
 
-    def __repr__(self):
-        return r"""%s %s{
-   %s     
-}
-""" % (self.conditionType, self.conditionJudge, self.subCode)
+#     def __repr__(self):
+#         return r"""%s %s{
+#    %s
+# }
+# """ % (self.conditionType, self.conditionJudge, self.fileContent)

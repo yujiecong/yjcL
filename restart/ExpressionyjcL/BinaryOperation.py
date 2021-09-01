@@ -72,10 +72,6 @@ class BinaryOperation_yjcL(Expression_yjcL):
 
         return resultValue
 
-
-    def __repr__(self):
-        return self.value
-
     @staticmethod
     def getBinaryOperationValue(valueDict):
 
