@@ -8,19 +8,17 @@
 @Author   :yujiecong
 @Date     :2021/8/31 15:59 
 '''
-import pprint
 
-import restart.Global.Variable
 from restart.Enum.Enum import StatementType, ConditionalType
+from restart.ExpressionyjcL.BinaryOperation import BinaryOperation_yjcL
 from restart.Statement_yjcL.Statement_yjcL import Statement_yjcL
-from restart.TokenyjcL.Token import Token_yjcL
 
 
-class Something_Conditional_yjcL(Statement_yjcL):
+class SomethingConditional_yjcL(Statement_yjcL):
     def __init__(self, value):
         self.value = value
         self.type_ = StatementType.Something_Conditional
-        self.subCode = self.value["value"]
+        self.fileContent = self.value["value"]
         self.statementObjects = []
 
     def resolve(self):
@@ -28,27 +26,29 @@ class Something_Conditional_yjcL(Statement_yjcL):
 
         :return:
         """
-        self.conditionJudge = Token_yjcL.getValue(self.value["condition_judge"])
+
+        self.conditionJudge=self.value["condition_judge"]
+        condition = BinaryOperation_yjcL.getExpressionValue(self.conditionJudge)
 
         self.conditionType = self.value["condition_type"]["type"]
-
-        if self.conditionJudge:
+        if condition:
             if self.conditionType == ConditionalType.If:
                 for obj in self.statementObjects:
-
                     obj.resolve()
                     # print(obj)
             elif self.conditionType == ConditionalType.While:
                 "直到conditionJudge失效才不执行"
-                while self.conditionJudge:
+                while condition:
                     for obj in self.statementObjects:
-
                         obj.resolve()
-                        # print(obj)
-                    self.conditionJudge= Token_yjcL.getValue(self.value["condition_judge"])
+
+                    condition= BinaryOperation_yjcL.getExpressionValue(self.conditionJudge)
+            elif self.conditionType==ConditionalType.ForeverLoop:
+                while condition:
+                    for obj in self.statementObjects:
+                        obj.resolve()
+
 
     def __repr__(self):
-        return r"""%s %s{
-   %s     
-}
-""" % (self.conditionType, self.conditionJudge, self.subCode)
+        return r"""%s %s %s
+""" % (self.conditionType, self.conditionJudge, self.fileContent)

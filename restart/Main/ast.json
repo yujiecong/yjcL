@@ -5,138 +5,24 @@
         "value": [
             {
                 "expression": {
-                    "type": "NUMBER",
-                    "value": -2
+                    "type": "FLOAT",
+                    "value": 1123.1123
                 },
                 "identifier": {
                     "type": "IDENTIFIER",
-                    "value": "\u54de\u54de\u7684\u5934\u53d1"
+                    "value": "a"
                 },
                 "type": "Assignment"
             },
             {
-                "expression": {
-                    "type": "NUMBER",
-                    "value": 1
+                "print_key": {
+                    "type": "PRINT",
+                    "value": "print"
                 },
-                "identifier": {
-                    "type": "IDENTIFIER",
-                    "value": "\u6bcf\u5929\u53d8\u957f\u7684\u5398\u7c73"
-                },
-                "type": "Assignment"
-            },
-            {
-                "condition_judge": {
-                    "type": "IDENTIFIER",
-                    "value": "\u54de\u54de\u7684\u5934\u53d1"
-                },
-                "condition_type": {
-                    "type": "WHILE",
-                    "value": "\u5f53"
-                },
-                "type": "Something_Conditional",
+                "type": "PrintSomething",
                 "value": {
-                    "type": "FileContent",
-                    "value": [
-                        {
-                            "expression": {
-                                "type": "NUMBER",
-                                "value": -2
-                            },
-                            "identifier": {
-                                "type": "IDENTIFIER",
-                                "value": "\u54de\u54de\u7684\u5e7f\u5ea6"
-                            },
-                            "type": "Assignment"
-                        },
-                        {
-                            "expression": {
-                                "type": "NUMBER",
-                                "value": 1
-                            },
-                            "identifier": {
-                                "type": "IDENTIFIER",
-                                "value": "\u6bcf\u5929\u53d8\u7c97\u4e00\u7c92\u7c73"
-                            },
-                            "type": "Assignment"
-                        },
-                        {
-                            "condition_judge": {
-                                "type": "IDENTIFIER",
-                                "value": "\u54de\u54de\u7684\u5e7f\u5ea6"
-                            },
-                            "condition_type": {
-                                "type": "IF",
-                                "value": "if"
-                            },
-                            "type": "Something_Conditional",
-                            "value": {
-                                "type": "FileContent",
-                                "value": [
-                                    {
-                                        "expression": {
-                                            "left": {
-                                                "type": "IDENTIFIER",
-                                                "value": "\u6bcf\u5929\u53d8\u7c97\u4e00\u7c92\u7c73"
-                                            },
-                                            "op": "+",
-                                            "right": {
-                                                "type": "IDENTIFIER",
-                                                "value": "\u54de\u54de\u7684\u5e7f\u5ea6"
-                                            },
-                                            "type": "BinaryOperation"
-                                        },
-                                        "identifier": {
-                                            "type": "IDENTIFIER",
-                                            "value": "\u54de\u54de\u7684\u5e7f\u5ea6"
-                                        },
-                                        "type": "Assignment"
-                                    },
-                                    {
-                                        "print_key": {
-                                            "type": "PRINT",
-                                            "value": "\u6253\u5370"
-                                        },
-                                        "type": "PrintSomething",
-                                        "value": {
-                                            "type": "NUMBER",
-                                            "value": "\u54de\u54de\u957f\u7c97\u4e86\u567b"
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "print_key": {
-                                "type": "PRINT",
-                                "value": "\u6253\u5370"
-                            },
-                            "type": "PrintSomething",
-                            "value": {
-                                "type": "NUMBER",
-                                "value": "\u54de\u54de\u957f\u957f\u4e86\u567b"
-                            }
-                        },
-                        {
-                            "expression": {
-                                "left": {
-                                    "type": "IDENTIFIER",
-                                    "value": "\u54de\u54de\u7684\u5934\u53d1"
-                                },
-                                "op": "+",
-                                "right": {
-                                    "type": "IDENTIFIER",
-                                    "value": "\u6bcf\u5929\u53d8\u957f\u7684\u5398\u7c73"
-                                },
-                                "type": "BinaryOperation"
-                            },
-                            "identifier": {
-                                "type": "IDENTIFIER",
-                                "value": "\u54de\u54de\u7684\u5934\u53d1"
-                            },
-                            "type": "Assignment"
-                        }
-                    ]
+                    "type": "IDENTIFIER",
+                    "value": "a"
                 }
             }
         ]

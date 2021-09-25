@@ -15,6 +15,7 @@ class Source:
 class ConditionalType:
     If="IF"
     While="WHILE"
+    ForeverLoop="FOREVER_LOOP"
 
 class ExpressionType:
     BinaryOperation="BinaryOperation"
@@ -25,12 +26,13 @@ class StatementType:
     PrintSomething="PrintSomething"
     Something_Conditional="Something_Conditional"
     Assignment="Assignment"
-    BinaryOperation="BinaryOperation"
+    ForLoop="ForLoop"
 
 class TokenType:
     String="STRING"
     Identifier="IDENTIFIER"
     Number="NUMBER"
+<<<<<<< HEAD
 
 
 
@@ -42,3 +44,6 @@ class TokenType:
 
 # 3.632727272727273
 print(0.2*85+77.69*0.7+3.6)
+=======
+    Float="Float"
+>>>>>>> 4a2e4594b6b7289e8b799736e26a551d31c88c5e

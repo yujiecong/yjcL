@@ -12,46 +12,67 @@ Rule 6     empty -> <empty>
 Rule 7     Statement -> Assignment
 Rule 8     Statement -> PrintSomething
 Rule 9     Statement -> Something_Conditional
-Rule 10    Statement -> Expression
-Rule 11    Assignment -> IDENTIFIER EQUAL Expression
-Rule 12    Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-Rule 13    Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-Rule 14    Expression -> Expression PLUS Expression
-Rule 15    Expression -> Expression MINUS Expression
-Rule 16    Expression -> Expression TIMES Expression
-Rule 17    Expression -> Expression DIVIDE Expression
-Rule 18    Expression -> NUMBER
-Rule 19    Expression -> STRING
-Rule 20    Expression -> IDENTIFIER
-Rule 21    Expression -> LEFT_PAREN Expression RIGHT_PAREN
-Rule 22    Expression -> MINUS Expression
-Rule 23    PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN
+Rule 10    Statement -> ForLoop
+Rule 11    Statement -> Expression
+Rule 12    ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+Rule 13    Assignment -> IDENTIFIER ASSIGNMENT Expression
+Rule 14    Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+Rule 15    Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+Rule 16    Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+Rule 17    Expression -> Expression PLUS Expression
+Rule 18    Expression -> Expression MINUS Expression
+Rule 19    Expression -> Expression TIMES Expression
+Rule 20    Expression -> Expression DIVIDE Expression
+Rule 21    Expression -> Expression GREAT_THAN Expression
+Rule 22    Expression -> Expression LOWER_THAN Expression
+Rule 23    Expression -> Expression GREAT_EQUAL Expression
+Rule 24    Expression -> Expression LOWER_EQUAL Expression
+Rule 25    Expression -> Expression EQUAL Expression
+Rule 26    Expression -> Expression NOT_EQUAL Expression
+Rule 27    Expression -> NUMBER
+Rule 28    Expression -> STRING
+Rule 29    Expression -> IDENTIFIER
+Rule 30    Expression -> FLOAT
+Rule 31    Expression -> LEFT_PAREN Expression RIGHT_PAREN
+Rule 32    Expression -> MINUS Expression
+Rule 33    PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN
 
 Terminals, with rules where they appear
 
-DIVIDE               : 17
+ASSIGNMENT           : 13
+DIVIDE               : 20
 ENDMARKER            : 1 2
-EQUAL                : 11
-IDENTIFIER           : 11 20
-IF                   : 12
-LEFT_BRACKET         : 12 13
-LEFT_PAREN           : 21 23
-MINUS                : 15 22
-NUMBER               : 18
-PLUS                 : 14
-PRINT                : 23
-RIGHT_BRACKET        : 12 13
-RIGHT_PAREN          : 21 23
-STRING               : 19
-TIMES                : 16
-WHILE                : 13
+EQUAL                : 25
+FLOAT                : 30
+FOR                  : 12
+FOREVER_LOOP         : 16
+GREAT_EQUAL          : 23
+GREAT_THAN           : 21
+IDENTIFIER           : 12 13 29
+IF                   : 14
+IN                   : 12
+LEFT_BRACKET         : 12 14 15 16
+LEFT_PAREN           : 31 33
+LOWER_EQUAL          : 24
+LOWER_THAN           : 22
+MINUS                : 18 32
+NOT_EQUAL            : 26
+NUMBER               : 27
+PLUS                 : 17
+PRINT                : 33
+RIGHT_BRACKET        : 12 14 15 16
+RIGHT_PAREN          : 31 33
+STRING               : 28
+TIMES                : 19
+WHILE                : 15
 error                : 
 
 Nonterminals, with rules where they appear
 
 Assignment           : 7
-Expression           : 10 11 12 13 14 14 15 15 16 16 17 17 21 22 23
-FileContent          : 2 3 12 13
+Expression           : 11 12 13 14 15 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 31 32 33
+FileContent          : 2 3 12 14 15 16
+ForLoop              : 10
 PrintSomething       : 8
 Something_Conditional : 9
 SourceCode           : 0
@@ -71,48 +92,67 @@ state 0
     (7) Statement -> . Assignment
     (8) Statement -> . PrintSomething
     (9) Statement -> . Something_Conditional
-    (10) Statement -> . Expression
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
     (6) empty -> .
-    (11) Assignment -> . IDENTIFIER EQUAL Expression
-    (23) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
-    (12) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (13) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
   ! shift/reduce conflict for ENDMARKER resolved as shift
   ! shift/reduce conflict for IDENTIFIER resolved as shift
   ! shift/reduce conflict for PRINT resolved as shift
   ! shift/reduce conflict for IF resolved as shift
   ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for FOREVER_LOOP resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
   ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
   ! shift/reduce conflict for LEFT_PAREN resolved as shift
   ! shift/reduce conflict for MINUS resolved as shift
     ENDMARKER       shift and go to state 2
-    IDENTIFIER      shift and go to state 10
-    PRINT           shift and go to state 11
-    IF              shift and go to state 13
-    WHILE           shift and go to state 14
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
   ! ENDMARKER       [ reduce using rule 6 (empty -> .) ]
   ! IDENTIFIER      [ reduce using rule 6 (empty -> .) ]
   ! PRINT           [ reduce using rule 6 (empty -> .) ]
   ! IF              [ reduce using rule 6 (empty -> .) ]
   ! WHILE           [ reduce using rule 6 (empty -> .) ]
+  ! FOREVER_LOOP    [ reduce using rule 6 (empty -> .) ]
+  ! FOR             [ reduce using rule 6 (empty -> .) ]
   ! NUMBER          [ reduce using rule 6 (empty -> .) ]
   ! STRING          [ reduce using rule 6 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 6 (empty -> .) ]
   ! LEFT_PAREN      [ reduce using rule 6 (empty -> .) ]
   ! MINUS           [ reduce using rule 6 (empty -> .) ]
 
@@ -123,7 +163,8 @@ state 0
     Assignment                     shift and go to state 6
     PrintSomething                 shift and go to state 7
     Something_Conditional          shift and go to state 8
-    Expression                     shift and go to state 9
+    ForLoop                        shift and go to state 9
+    Expression                     shift and go to state 10
 
 state 1
 
@@ -145,36 +186,50 @@ state 3
     (7) Statement -> . Assignment
     (8) Statement -> . PrintSomething
     (9) Statement -> . Something_Conditional
-    (10) Statement -> . Expression
-    (11) Assignment -> . IDENTIFIER EQUAL Expression
-    (23) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
-    (12) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (13) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    ENDMARKER       shift and go to state 18
-    IDENTIFIER      shift and go to state 10
-    PRINT           shift and go to state 11
-    IF              shift and go to state 13
-    WHILE           shift and go to state 14
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    ENDMARKER       shift and go to state 22
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-    Statement                      shift and go to state 19
+    Statement                      shift and go to state 23
     Assignment                     shift and go to state 6
     PrintSomething                 shift and go to state 7
     Something_Conditional          shift and go to state 8
-    Expression                     shift and go to state 9
+    ForLoop                        shift and go to state 9
+    Expression                     shift and go to state 10
 
 state 4
 
@@ -185,8 +240,11 @@ state 4
     PRINT           reduce using rule 4 (FileContent -> Statement .)
     IF              reduce using rule 4 (FileContent -> Statement .)
     WHILE           reduce using rule 4 (FileContent -> Statement .)
+    FOREVER_LOOP    reduce using rule 4 (FileContent -> Statement .)
+    FOR             reduce using rule 4 (FileContent -> Statement .)
     NUMBER          reduce using rule 4 (FileContent -> Statement .)
     STRING          reduce using rule 4 (FileContent -> Statement .)
+    FLOAT           reduce using rule 4 (FileContent -> Statement .)
     LEFT_PAREN      reduce using rule 4 (FileContent -> Statement .)
     MINUS           reduce using rule 4 (FileContent -> Statement .)
     RIGHT_BRACKET   reduce using rule 4 (FileContent -> Statement .)
@@ -201,8 +259,11 @@ state 5
     PRINT           reduce using rule 5 (FileContent -> empty .)
     IF              reduce using rule 5 (FileContent -> empty .)
     WHILE           reduce using rule 5 (FileContent -> empty .)
+    FOREVER_LOOP    reduce using rule 5 (FileContent -> empty .)
+    FOR             reduce using rule 5 (FileContent -> empty .)
     NUMBER          reduce using rule 5 (FileContent -> empty .)
     STRING          reduce using rule 5 (FileContent -> empty .)
+    FLOAT           reduce using rule 5 (FileContent -> empty .)
     LEFT_PAREN      reduce using rule 5 (FileContent -> empty .)
     MINUS           reduce using rule 5 (FileContent -> empty .)
     RIGHT_BRACKET   reduce using rule 5 (FileContent -> empty .)
@@ -217,8 +278,11 @@ state 6
     PRINT           reduce using rule 7 (Statement -> Assignment .)
     IF              reduce using rule 7 (Statement -> Assignment .)
     WHILE           reduce using rule 7 (Statement -> Assignment .)
+    FOREVER_LOOP    reduce using rule 7 (Statement -> Assignment .)
+    FOR             reduce using rule 7 (Statement -> Assignment .)
     NUMBER          reduce using rule 7 (Statement -> Assignment .)
     STRING          reduce using rule 7 (Statement -> Assignment .)
+    FLOAT           reduce using rule 7 (Statement -> Assignment .)
     LEFT_PAREN      reduce using rule 7 (Statement -> Assignment .)
     MINUS           reduce using rule 7 (Statement -> Assignment .)
     RIGHT_BRACKET   reduce using rule 7 (Statement -> Assignment .)
@@ -233,8 +297,11 @@ state 7
     PRINT           reduce using rule 8 (Statement -> PrintSomething .)
     IF              reduce using rule 8 (Statement -> PrintSomething .)
     WHILE           reduce using rule 8 (Statement -> PrintSomething .)
+    FOREVER_LOOP    reduce using rule 8 (Statement -> PrintSomething .)
+    FOR             reduce using rule 8 (Statement -> PrintSomething .)
     NUMBER          reduce using rule 8 (Statement -> PrintSomething .)
     STRING          reduce using rule 8 (Statement -> PrintSomething .)
+    FLOAT           reduce using rule 8 (Statement -> PrintSomething .)
     LEFT_PAREN      reduce using rule 8 (Statement -> PrintSomething .)
     MINUS           reduce using rule 8 (Statement -> PrintSomething .)
     RIGHT_BRACKET   reduce using rule 8 (Statement -> PrintSomething .)
@@ -249,8 +316,11 @@ state 8
     PRINT           reduce using rule 9 (Statement -> Something_Conditional .)
     IF              reduce using rule 9 (Statement -> Something_Conditional .)
     WHILE           reduce using rule 9 (Statement -> Something_Conditional .)
+    FOREVER_LOOP    reduce using rule 9 (Statement -> Something_Conditional .)
+    FOR             reduce using rule 9 (Statement -> Something_Conditional .)
     NUMBER          reduce using rule 9 (Statement -> Something_Conditional .)
     STRING          reduce using rule 9 (Statement -> Something_Conditional .)
+    FLOAT           reduce using rule 9 (Statement -> Something_Conditional .)
     LEFT_PAREN      reduce using rule 9 (Statement -> Something_Conditional .)
     MINUS           reduce using rule 9 (Statement -> Something_Conditional .)
     RIGHT_BRACKET   reduce using rule 9 (Statement -> Something_Conditional .)
@@ -258,192 +328,329 @@ state 8
 
 state 9
 
-    (10) Statement -> Expression .
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (10) Statement -> ForLoop .
 
-  ! shift/reduce conflict for MINUS resolved as shift
-    ENDMARKER       reduce using rule 10 (Statement -> Expression .)
-    IDENTIFIER      reduce using rule 10 (Statement -> Expression .)
-    PRINT           reduce using rule 10 (Statement -> Expression .)
-    IF              reduce using rule 10 (Statement -> Expression .)
-    WHILE           reduce using rule 10 (Statement -> Expression .)
-    NUMBER          reduce using rule 10 (Statement -> Expression .)
-    STRING          reduce using rule 10 (Statement -> Expression .)
-    LEFT_PAREN      reduce using rule 10 (Statement -> Expression .)
-    RIGHT_BRACKET   reduce using rule 10 (Statement -> Expression .)
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
-
-  ! MINUS           [ reduce using rule 10 (Statement -> Expression .) ]
+    ENDMARKER       reduce using rule 10 (Statement -> ForLoop .)
+    IDENTIFIER      reduce using rule 10 (Statement -> ForLoop .)
+    PRINT           reduce using rule 10 (Statement -> ForLoop .)
+    IF              reduce using rule 10 (Statement -> ForLoop .)
+    WHILE           reduce using rule 10 (Statement -> ForLoop .)
+    FOREVER_LOOP    reduce using rule 10 (Statement -> ForLoop .)
+    FOR             reduce using rule 10 (Statement -> ForLoop .)
+    NUMBER          reduce using rule 10 (Statement -> ForLoop .)
+    STRING          reduce using rule 10 (Statement -> ForLoop .)
+    FLOAT           reduce using rule 10 (Statement -> ForLoop .)
+    LEFT_PAREN      reduce using rule 10 (Statement -> ForLoop .)
+    MINUS           reduce using rule 10 (Statement -> ForLoop .)
+    RIGHT_BRACKET   reduce using rule 10 (Statement -> ForLoop .)
 
 
 state 10
 
-    (11) Assignment -> IDENTIFIER . EQUAL Expression
-    (20) Expression -> IDENTIFIER .
+    (11) Statement -> Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
 
-    EQUAL           shift and go to state 24
-    PLUS            reduce using rule 20 (Expression -> IDENTIFIER .)
-    MINUS           reduce using rule 20 (Expression -> IDENTIFIER .)
-    TIMES           reduce using rule 20 (Expression -> IDENTIFIER .)
-    DIVIDE          reduce using rule 20 (Expression -> IDENTIFIER .)
-    ENDMARKER       reduce using rule 20 (Expression -> IDENTIFIER .)
-    IDENTIFIER      reduce using rule 20 (Expression -> IDENTIFIER .)
-    PRINT           reduce using rule 20 (Expression -> IDENTIFIER .)
-    IF              reduce using rule 20 (Expression -> IDENTIFIER .)
-    WHILE           reduce using rule 20 (Expression -> IDENTIFIER .)
-    NUMBER          reduce using rule 20 (Expression -> IDENTIFIER .)
-    STRING          reduce using rule 20 (Expression -> IDENTIFIER .)
-    LEFT_PAREN      reduce using rule 20 (Expression -> IDENTIFIER .)
-    RIGHT_BRACKET   reduce using rule 20 (Expression -> IDENTIFIER .)
+  ! shift/reduce conflict for MINUS resolved as shift
+    ENDMARKER       reduce using rule 11 (Statement -> Expression .)
+    IDENTIFIER      reduce using rule 11 (Statement -> Expression .)
+    PRINT           reduce using rule 11 (Statement -> Expression .)
+    IF              reduce using rule 11 (Statement -> Expression .)
+    WHILE           reduce using rule 11 (Statement -> Expression .)
+    FOREVER_LOOP    reduce using rule 11 (Statement -> Expression .)
+    FOR             reduce using rule 11 (Statement -> Expression .)
+    NUMBER          reduce using rule 11 (Statement -> Expression .)
+    STRING          reduce using rule 11 (Statement -> Expression .)
+    FLOAT           reduce using rule 11 (Statement -> Expression .)
+    LEFT_PAREN      reduce using rule 11 (Statement -> Expression .)
+    RIGHT_BRACKET   reduce using rule 11 (Statement -> Expression .)
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+  ! MINUS           [ reduce using rule 11 (Statement -> Expression .) ]
 
 
 state 11
 
-    (23) PrintSomething -> PRINT . LEFT_PAREN Expression RIGHT_PAREN
+    (13) Assignment -> IDENTIFIER . ASSIGNMENT Expression
+    (29) Expression -> IDENTIFIER .
 
-    LEFT_PAREN      shift and go to state 25
+    ASSIGNMENT      shift and go to state 34
+    PLUS            reduce using rule 29 (Expression -> IDENTIFIER .)
+    MINUS           reduce using rule 29 (Expression -> IDENTIFIER .)
+    TIMES           reduce using rule 29 (Expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 29 (Expression -> IDENTIFIER .)
+    GREAT_THAN      reduce using rule 29 (Expression -> IDENTIFIER .)
+    LOWER_THAN      reduce using rule 29 (Expression -> IDENTIFIER .)
+    GREAT_EQUAL     reduce using rule 29 (Expression -> IDENTIFIER .)
+    LOWER_EQUAL     reduce using rule 29 (Expression -> IDENTIFIER .)
+    EQUAL           reduce using rule 29 (Expression -> IDENTIFIER .)
+    NOT_EQUAL       reduce using rule 29 (Expression -> IDENTIFIER .)
+    ENDMARKER       reduce using rule 29 (Expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 29 (Expression -> IDENTIFIER .)
+    PRINT           reduce using rule 29 (Expression -> IDENTIFIER .)
+    IF              reduce using rule 29 (Expression -> IDENTIFIER .)
+    WHILE           reduce using rule 29 (Expression -> IDENTIFIER .)
+    FOREVER_LOOP    reduce using rule 29 (Expression -> IDENTIFIER .)
+    FOR             reduce using rule 29 (Expression -> IDENTIFIER .)
+    NUMBER          reduce using rule 29 (Expression -> IDENTIFIER .)
+    STRING          reduce using rule 29 (Expression -> IDENTIFIER .)
+    FLOAT           reduce using rule 29 (Expression -> IDENTIFIER .)
+    LEFT_PAREN      reduce using rule 29 (Expression -> IDENTIFIER .)
+    RIGHT_BRACKET   reduce using rule 29 (Expression -> IDENTIFIER .)
 
 
 state 12
 
-    (21) Expression -> LEFT_PAREN . Expression RIGHT_PAREN
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (33) PrintSomething -> PRINT . LEFT_PAREN Expression RIGHT_PAREN
 
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    LEFT_PAREN      shift and go to state 35
 
-    Expression                     shift and go to state 26
 
 state 13
 
-    (12) Something_Conditional -> IF . Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (31) Expression -> LEFT_PAREN . Expression RIGHT_PAREN
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-    Expression                     shift and go to state 28
+    Expression                     shift and go to state 36
 
 state 14
 
-    (13) Something_Conditional -> WHILE . Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (14) Something_Conditional -> IF . Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-    Expression                     shift and go to state 29
+    Expression                     shift and go to state 38
 
 state 15
 
-    (22) Expression -> MINUS . Expression
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (15) Something_Conditional -> WHILE . Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-    Expression                     shift and go to state 30
+    Expression                     shift and go to state 39
 
 state 16
 
-    (18) Expression -> NUMBER .
+    (16) Something_Conditional -> FOREVER_LOOP . LEFT_BRACKET FileContent RIGHT_BRACKET
 
-    PLUS            reduce using rule 18 (Expression -> NUMBER .)
-    MINUS           reduce using rule 18 (Expression -> NUMBER .)
-    TIMES           reduce using rule 18 (Expression -> NUMBER .)
-    DIVIDE          reduce using rule 18 (Expression -> NUMBER .)
-    ENDMARKER       reduce using rule 18 (Expression -> NUMBER .)
-    IDENTIFIER      reduce using rule 18 (Expression -> NUMBER .)
-    PRINT           reduce using rule 18 (Expression -> NUMBER .)
-    IF              reduce using rule 18 (Expression -> NUMBER .)
-    WHILE           reduce using rule 18 (Expression -> NUMBER .)
-    NUMBER          reduce using rule 18 (Expression -> NUMBER .)
-    STRING          reduce using rule 18 (Expression -> NUMBER .)
-    LEFT_PAREN      reduce using rule 18 (Expression -> NUMBER .)
-    RIGHT_PAREN     reduce using rule 18 (Expression -> NUMBER .)
-    LEFT_BRACKET    reduce using rule 18 (Expression -> NUMBER .)
-    RIGHT_BRACKET   reduce using rule 18 (Expression -> NUMBER .)
+    LEFT_BRACKET    shift and go to state 40
 
 
 state 17
 
-    (19) Expression -> STRING .
+    (12) ForLoop -> FOR . IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
 
-    PLUS            reduce using rule 19 (Expression -> STRING .)
-    MINUS           reduce using rule 19 (Expression -> STRING .)
-    TIMES           reduce using rule 19 (Expression -> STRING .)
-    DIVIDE          reduce using rule 19 (Expression -> STRING .)
-    ENDMARKER       reduce using rule 19 (Expression -> STRING .)
-    IDENTIFIER      reduce using rule 19 (Expression -> STRING .)
-    PRINT           reduce using rule 19 (Expression -> STRING .)
-    IF              reduce using rule 19 (Expression -> STRING .)
-    WHILE           reduce using rule 19 (Expression -> STRING .)
-    NUMBER          reduce using rule 19 (Expression -> STRING .)
-    STRING          reduce using rule 19 (Expression -> STRING .)
-    LEFT_PAREN      reduce using rule 19 (Expression -> STRING .)
-    RIGHT_PAREN     reduce using rule 19 (Expression -> STRING .)
-    LEFT_BRACKET    reduce using rule 19 (Expression -> STRING .)
-    RIGHT_BRACKET   reduce using rule 19 (Expression -> STRING .)
+    IDENTIFIER      shift and go to state 41
 
 
 state 18
+
+    (32) Expression -> MINUS . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+    Expression                     shift and go to state 42
+
+state 19
+
+    (27) Expression -> NUMBER .
+
+    PLUS            reduce using rule 27 (Expression -> NUMBER .)
+    MINUS           reduce using rule 27 (Expression -> NUMBER .)
+    TIMES           reduce using rule 27 (Expression -> NUMBER .)
+    DIVIDE          reduce using rule 27 (Expression -> NUMBER .)
+    GREAT_THAN      reduce using rule 27 (Expression -> NUMBER .)
+    LOWER_THAN      reduce using rule 27 (Expression -> NUMBER .)
+    GREAT_EQUAL     reduce using rule 27 (Expression -> NUMBER .)
+    LOWER_EQUAL     reduce using rule 27 (Expression -> NUMBER .)
+    EQUAL           reduce using rule 27 (Expression -> NUMBER .)
+    NOT_EQUAL       reduce using rule 27 (Expression -> NUMBER .)
+    ENDMARKER       reduce using rule 27 (Expression -> NUMBER .)
+    IDENTIFIER      reduce using rule 27 (Expression -> NUMBER .)
+    PRINT           reduce using rule 27 (Expression -> NUMBER .)
+    IF              reduce using rule 27 (Expression -> NUMBER .)
+    WHILE           reduce using rule 27 (Expression -> NUMBER .)
+    FOREVER_LOOP    reduce using rule 27 (Expression -> NUMBER .)
+    FOR             reduce using rule 27 (Expression -> NUMBER .)
+    NUMBER          reduce using rule 27 (Expression -> NUMBER .)
+    STRING          reduce using rule 27 (Expression -> NUMBER .)
+    FLOAT           reduce using rule 27 (Expression -> NUMBER .)
+    LEFT_PAREN      reduce using rule 27 (Expression -> NUMBER .)
+    RIGHT_PAREN     reduce using rule 27 (Expression -> NUMBER .)
+    LEFT_BRACKET    reduce using rule 27 (Expression -> NUMBER .)
+    RIGHT_BRACKET   reduce using rule 27 (Expression -> NUMBER .)
+
+
+state 20
+
+    (28) Expression -> STRING .
+
+    PLUS            reduce using rule 28 (Expression -> STRING .)
+    MINUS           reduce using rule 28 (Expression -> STRING .)
+    TIMES           reduce using rule 28 (Expression -> STRING .)
+    DIVIDE          reduce using rule 28 (Expression -> STRING .)
+    GREAT_THAN      reduce using rule 28 (Expression -> STRING .)
+    LOWER_THAN      reduce using rule 28 (Expression -> STRING .)
+    GREAT_EQUAL     reduce using rule 28 (Expression -> STRING .)
+    LOWER_EQUAL     reduce using rule 28 (Expression -> STRING .)
+    EQUAL           reduce using rule 28 (Expression -> STRING .)
+    NOT_EQUAL       reduce using rule 28 (Expression -> STRING .)
+    ENDMARKER       reduce using rule 28 (Expression -> STRING .)
+    IDENTIFIER      reduce using rule 28 (Expression -> STRING .)
+    PRINT           reduce using rule 28 (Expression -> STRING .)
+    IF              reduce using rule 28 (Expression -> STRING .)
+    WHILE           reduce using rule 28 (Expression -> STRING .)
+    FOREVER_LOOP    reduce using rule 28 (Expression -> STRING .)
+    FOR             reduce using rule 28 (Expression -> STRING .)
+    NUMBER          reduce using rule 28 (Expression -> STRING .)
+    STRING          reduce using rule 28 (Expression -> STRING .)
+    FLOAT           reduce using rule 28 (Expression -> STRING .)
+    LEFT_PAREN      reduce using rule 28 (Expression -> STRING .)
+    RIGHT_PAREN     reduce using rule 28 (Expression -> STRING .)
+    LEFT_BRACKET    reduce using rule 28 (Expression -> STRING .)
+    RIGHT_BRACKET   reduce using rule 28 (Expression -> STRING .)
+
+
+state 21
+
+    (30) Expression -> FLOAT .
+
+    PLUS            reduce using rule 30 (Expression -> FLOAT .)
+    MINUS           reduce using rule 30 (Expression -> FLOAT .)
+    TIMES           reduce using rule 30 (Expression -> FLOAT .)
+    DIVIDE          reduce using rule 30 (Expression -> FLOAT .)
+    GREAT_THAN      reduce using rule 30 (Expression -> FLOAT .)
+    LOWER_THAN      reduce using rule 30 (Expression -> FLOAT .)
+    GREAT_EQUAL     reduce using rule 30 (Expression -> FLOAT .)
+    LOWER_EQUAL     reduce using rule 30 (Expression -> FLOAT .)
+    EQUAL           reduce using rule 30 (Expression -> FLOAT .)
+    NOT_EQUAL       reduce using rule 30 (Expression -> FLOAT .)
+    ENDMARKER       reduce using rule 30 (Expression -> FLOAT .)
+    IDENTIFIER      reduce using rule 30 (Expression -> FLOAT .)
+    PRINT           reduce using rule 30 (Expression -> FLOAT .)
+    IF              reduce using rule 30 (Expression -> FLOAT .)
+    WHILE           reduce using rule 30 (Expression -> FLOAT .)
+    FOREVER_LOOP    reduce using rule 30 (Expression -> FLOAT .)
+    FOR             reduce using rule 30 (Expression -> FLOAT .)
+    NUMBER          reduce using rule 30 (Expression -> FLOAT .)
+    STRING          reduce using rule 30 (Expression -> FLOAT .)
+    FLOAT           reduce using rule 30 (Expression -> FLOAT .)
+    LEFT_PAREN      reduce using rule 30 (Expression -> FLOAT .)
+    RIGHT_PAREN     reduce using rule 30 (Expression -> FLOAT .)
+    LEFT_BRACKET    reduce using rule 30 (Expression -> FLOAT .)
+    RIGHT_BRACKET   reduce using rule 30 (Expression -> FLOAT .)
+
+
+state 22
 
     (2) SourceCode -> FileContent ENDMARKER .
 
     $end            reduce using rule 2 (SourceCode -> FileContent ENDMARKER .)
 
 
-state 19
+state 23
 
     (3) FileContent -> FileContent Statement .
 
@@ -452,659 +659,1878 @@ state 19
     PRINT           reduce using rule 3 (FileContent -> FileContent Statement .)
     IF              reduce using rule 3 (FileContent -> FileContent Statement .)
     WHILE           reduce using rule 3 (FileContent -> FileContent Statement .)
+    FOREVER_LOOP    reduce using rule 3 (FileContent -> FileContent Statement .)
+    FOR             reduce using rule 3 (FileContent -> FileContent Statement .)
     NUMBER          reduce using rule 3 (FileContent -> FileContent Statement .)
     STRING          reduce using rule 3 (FileContent -> FileContent Statement .)
+    FLOAT           reduce using rule 3 (FileContent -> FileContent Statement .)
     LEFT_PAREN      reduce using rule 3 (FileContent -> FileContent Statement .)
     MINUS           reduce using rule 3 (FileContent -> FileContent Statement .)
     RIGHT_BRACKET   reduce using rule 3 (FileContent -> FileContent Statement .)
 
 
-state 20
-
-    (14) Expression -> Expression PLUS . Expression
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
-
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
-
-    Expression                     shift and go to state 31
-
-state 21
-
-    (15) Expression -> Expression MINUS . Expression
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
-
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
-
-    Expression                     shift and go to state 32
-
-state 22
-
-    (16) Expression -> Expression TIMES . Expression
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
-
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
-
-    Expression                     shift and go to state 33
-
-state 23
-
-    (17) Expression -> Expression DIVIDE . Expression
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
-
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
-
-    Expression                     shift and go to state 34
-
 state 24
 
-    (11) Assignment -> IDENTIFIER EQUAL . Expression
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (17) Expression -> Expression PLUS . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-    Expression                     shift and go to state 35
+    Expression                     shift and go to state 43
 
 state 25
 
-    (23) PrintSomething -> PRINT LEFT_PAREN . Expression RIGHT_PAREN
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (18) Expression -> Expression MINUS . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    IDENTIFIER      shift and go to state 27
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-    Expression                     shift and go to state 36
+    Expression                     shift and go to state 44
 
 state 26
 
-    (21) Expression -> LEFT_PAREN Expression . RIGHT_PAREN
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (19) Expression -> Expression TIMES . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    RIGHT_PAREN     shift and go to state 37
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
+    Expression                     shift and go to state 45
 
 state 27
 
-    (20) Expression -> IDENTIFIER .
+    (20) Expression -> Expression DIVIDE . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    RIGHT_PAREN     reduce using rule 20 (Expression -> IDENTIFIER .)
-    PLUS            reduce using rule 20 (Expression -> IDENTIFIER .)
-    MINUS           reduce using rule 20 (Expression -> IDENTIFIER .)
-    TIMES           reduce using rule 20 (Expression -> IDENTIFIER .)
-    DIVIDE          reduce using rule 20 (Expression -> IDENTIFIER .)
-    LEFT_BRACKET    reduce using rule 20 (Expression -> IDENTIFIER .)
-    ENDMARKER       reduce using rule 20 (Expression -> IDENTIFIER .)
-    IDENTIFIER      reduce using rule 20 (Expression -> IDENTIFIER .)
-    PRINT           reduce using rule 20 (Expression -> IDENTIFIER .)
-    IF              reduce using rule 20 (Expression -> IDENTIFIER .)
-    WHILE           reduce using rule 20 (Expression -> IDENTIFIER .)
-    NUMBER          reduce using rule 20 (Expression -> IDENTIFIER .)
-    STRING          reduce using rule 20 (Expression -> IDENTIFIER .)
-    LEFT_PAREN      reduce using rule 20 (Expression -> IDENTIFIER .)
-    RIGHT_BRACKET   reduce using rule 20 (Expression -> IDENTIFIER .)
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
+    Expression                     shift and go to state 46
 
 state 28
 
-    (12) Something_Conditional -> IF Expression . LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression GREAT_THAN . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    LEFT_BRACKET    shift and go to state 38
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
+    Expression                     shift and go to state 47
 
 state 29
 
-    (13) Something_Conditional -> WHILE Expression . LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (22) Expression -> Expression LOWER_THAN . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    LEFT_BRACKET    shift and go to state 39
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
+    Expression                     shift and go to state 48
 
 state 30
 
-    (22) Expression -> MINUS Expression .
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (23) Expression -> Expression GREAT_EQUAL . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    PLUS            reduce using rule 22 (Expression -> MINUS Expression .)
-    MINUS           reduce using rule 22 (Expression -> MINUS Expression .)
-    TIMES           reduce using rule 22 (Expression -> MINUS Expression .)
-    DIVIDE          reduce using rule 22 (Expression -> MINUS Expression .)
-    ENDMARKER       reduce using rule 22 (Expression -> MINUS Expression .)
-    IDENTIFIER      reduce using rule 22 (Expression -> MINUS Expression .)
-    PRINT           reduce using rule 22 (Expression -> MINUS Expression .)
-    IF              reduce using rule 22 (Expression -> MINUS Expression .)
-    WHILE           reduce using rule 22 (Expression -> MINUS Expression .)
-    NUMBER          reduce using rule 22 (Expression -> MINUS Expression .)
-    STRING          reduce using rule 22 (Expression -> MINUS Expression .)
-    LEFT_PAREN      reduce using rule 22 (Expression -> MINUS Expression .)
-    RIGHT_PAREN     reduce using rule 22 (Expression -> MINUS Expression .)
-    LEFT_BRACKET    reduce using rule 22 (Expression -> MINUS Expression .)
-    RIGHT_BRACKET   reduce using rule 22 (Expression -> MINUS Expression .)
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-  ! PLUS            [ shift and go to state 20 ]
-  ! MINUS           [ shift and go to state 21 ]
-  ! TIMES           [ shift and go to state 22 ]
-  ! DIVIDE          [ shift and go to state 23 ]
-
+    Expression                     shift and go to state 49
 
 state 31
 
-    (14) Expression -> Expression PLUS Expression .
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (24) Expression -> Expression LOWER_EQUAL . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    PLUS            reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    MINUS           reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    ENDMARKER       reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    IDENTIFIER      reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    PRINT           reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    IF              reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    WHILE           reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    NUMBER          reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    STRING          reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    LEFT_PAREN      reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    RIGHT_PAREN     reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    LEFT_BRACKET    reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    RIGHT_BRACKET   reduce using rule 14 (Expression -> Expression PLUS Expression .)
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-  ! TIMES           [ reduce using rule 14 (Expression -> Expression PLUS Expression .) ]
-  ! DIVIDE          [ reduce using rule 14 (Expression -> Expression PLUS Expression .) ]
-  ! PLUS            [ shift and go to state 20 ]
-  ! MINUS           [ shift and go to state 21 ]
-
+    Expression                     shift and go to state 50
 
 state 32
 
-    (15) Expression -> Expression MINUS Expression .
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (25) Expression -> Expression EQUAL . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    PLUS            reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    MINUS           reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    ENDMARKER       reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    IDENTIFIER      reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    PRINT           reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    IF              reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    WHILE           reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    NUMBER          reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    STRING          reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    LEFT_PAREN      reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    RIGHT_PAREN     reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    LEFT_BRACKET    reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    RIGHT_BRACKET   reduce using rule 15 (Expression -> Expression MINUS Expression .)
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-  ! TIMES           [ reduce using rule 15 (Expression -> Expression MINUS Expression .) ]
-  ! DIVIDE          [ reduce using rule 15 (Expression -> Expression MINUS Expression .) ]
-  ! PLUS            [ shift and go to state 20 ]
-  ! MINUS           [ shift and go to state 21 ]
-
+    Expression                     shift and go to state 51
 
 state 33
 
-    (16) Expression -> Expression TIMES Expression .
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (26) Expression -> Expression NOT_EQUAL . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    PLUS            reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    MINUS           reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    TIMES           reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    DIVIDE          reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    ENDMARKER       reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    IDENTIFIER      reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    PRINT           reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    IF              reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    WHILE           reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    NUMBER          reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    STRING          reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    LEFT_PAREN      reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    RIGHT_PAREN     reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    LEFT_BRACKET    reduce using rule 16 (Expression -> Expression TIMES Expression .)
-    RIGHT_BRACKET   reduce using rule 16 (Expression -> Expression TIMES Expression .)
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-  ! PLUS            [ shift and go to state 20 ]
-  ! MINUS           [ shift and go to state 21 ]
-  ! TIMES           [ shift and go to state 22 ]
-  ! DIVIDE          [ shift and go to state 23 ]
-
+    Expression                     shift and go to state 52
 
 state 34
 
-    (17) Expression -> Expression DIVIDE Expression .
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (13) Assignment -> IDENTIFIER ASSIGNMENT . Expression
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-    PLUS            reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    MINUS           reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    TIMES           reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    DIVIDE          reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    ENDMARKER       reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    IDENTIFIER      reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    PRINT           reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    IF              reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    WHILE           reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    NUMBER          reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    STRING          reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    LEFT_PAREN      reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    RIGHT_PAREN     reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    LEFT_BRACKET    reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
-    RIGHT_BRACKET   reduce using rule 17 (Expression -> Expression DIVIDE Expression .)
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-  ! PLUS            [ shift and go to state 20 ]
-  ! MINUS           [ shift and go to state 21 ]
-  ! TIMES           [ shift and go to state 22 ]
-  ! DIVIDE          [ shift and go to state 23 ]
-
+    Expression                     shift and go to state 53
 
 state 35
 
-    (11) Assignment -> IDENTIFIER EQUAL Expression .
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (33) PrintSomething -> PRINT LEFT_PAREN . Expression RIGHT_PAREN
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
-  ! shift/reduce conflict for MINUS resolved as shift
-    ENDMARKER       reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    IDENTIFIER      reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    PRINT           reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    IF              reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    WHILE           reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    NUMBER          reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    STRING          reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    LEFT_PAREN      reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    RIGHT_BRACKET   reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .)
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
-  ! MINUS           [ reduce using rule 11 (Assignment -> IDENTIFIER EQUAL Expression .) ]
-
+    Expression                     shift and go to state 54
 
 state 36
 
-    (23) PrintSomething -> PRINT LEFT_PAREN Expression . RIGHT_PAREN
-    (14) Expression -> Expression . PLUS Expression
-    (15) Expression -> Expression . MINUS Expression
-    (16) Expression -> Expression . TIMES Expression
-    (17) Expression -> Expression . DIVIDE Expression
+    (31) Expression -> LEFT_PAREN Expression . RIGHT_PAREN
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
 
-    RIGHT_PAREN     shift and go to state 40
-    PLUS            shift and go to state 20
-    MINUS           shift and go to state 21
-    TIMES           shift and go to state 22
-    DIVIDE          shift and go to state 23
+    RIGHT_PAREN     shift and go to state 55
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
 
 
 state 37
 
-    (21) Expression -> LEFT_PAREN Expression RIGHT_PAREN .
+    (29) Expression -> IDENTIFIER .
 
-    PLUS            reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    MINUS           reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    TIMES           reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    DIVIDE          reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    ENDMARKER       reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    IDENTIFIER      reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    PRINT           reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    IF              reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    WHILE           reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    NUMBER          reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    STRING          reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    LEFT_PAREN      reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    RIGHT_PAREN     reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    LEFT_BRACKET    reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
-    RIGHT_BRACKET   reduce using rule 21 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    RIGHT_PAREN     reduce using rule 29 (Expression -> IDENTIFIER .)
+    PLUS            reduce using rule 29 (Expression -> IDENTIFIER .)
+    MINUS           reduce using rule 29 (Expression -> IDENTIFIER .)
+    TIMES           reduce using rule 29 (Expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 29 (Expression -> IDENTIFIER .)
+    GREAT_THAN      reduce using rule 29 (Expression -> IDENTIFIER .)
+    LOWER_THAN      reduce using rule 29 (Expression -> IDENTIFIER .)
+    GREAT_EQUAL     reduce using rule 29 (Expression -> IDENTIFIER .)
+    LOWER_EQUAL     reduce using rule 29 (Expression -> IDENTIFIER .)
+    EQUAL           reduce using rule 29 (Expression -> IDENTIFIER .)
+    NOT_EQUAL       reduce using rule 29 (Expression -> IDENTIFIER .)
+    LEFT_BRACKET    reduce using rule 29 (Expression -> IDENTIFIER .)
+    ENDMARKER       reduce using rule 29 (Expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 29 (Expression -> IDENTIFIER .)
+    PRINT           reduce using rule 29 (Expression -> IDENTIFIER .)
+    IF              reduce using rule 29 (Expression -> IDENTIFIER .)
+    WHILE           reduce using rule 29 (Expression -> IDENTIFIER .)
+    FOREVER_LOOP    reduce using rule 29 (Expression -> IDENTIFIER .)
+    FOR             reduce using rule 29 (Expression -> IDENTIFIER .)
+    NUMBER          reduce using rule 29 (Expression -> IDENTIFIER .)
+    STRING          reduce using rule 29 (Expression -> IDENTIFIER .)
+    FLOAT           reduce using rule 29 (Expression -> IDENTIFIER .)
+    LEFT_PAREN      reduce using rule 29 (Expression -> IDENTIFIER .)
+    RIGHT_BRACKET   reduce using rule 29 (Expression -> IDENTIFIER .)
 
 
 state 38
 
-    (12) Something_Conditional -> IF Expression LEFT_BRACKET . FileContent RIGHT_BRACKET
-    (3) FileContent -> . FileContent Statement
-    (4) FileContent -> . Statement
-    (5) FileContent -> . empty
-    (7) Statement -> . Assignment
-    (8) Statement -> . PrintSomething
-    (9) Statement -> . Something_Conditional
-    (10) Statement -> . Expression
-    (6) empty -> .
-    (11) Assignment -> . IDENTIFIER EQUAL Expression
-    (23) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
-    (12) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (13) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (14) Something_Conditional -> IF Expression . LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
 
-  ! shift/reduce conflict for IDENTIFIER resolved as shift
-  ! shift/reduce conflict for PRINT resolved as shift
-  ! shift/reduce conflict for IF resolved as shift
-  ! shift/reduce conflict for WHILE resolved as shift
-  ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
-  ! shift/reduce conflict for LEFT_PAREN resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-    RIGHT_BRACKET   reduce using rule 6 (empty -> .)
-    IDENTIFIER      shift and go to state 10
-    PRINT           shift and go to state 11
-    IF              shift and go to state 13
-    WHILE           shift and go to state 14
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    LEFT_BRACKET    shift and go to state 56
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
 
-  ! IDENTIFIER      [ reduce using rule 6 (empty -> .) ]
-  ! PRINT           [ reduce using rule 6 (empty -> .) ]
-  ! IF              [ reduce using rule 6 (empty -> .) ]
-  ! WHILE           [ reduce using rule 6 (empty -> .) ]
-  ! NUMBER          [ reduce using rule 6 (empty -> .) ]
-  ! STRING          [ reduce using rule 6 (empty -> .) ]
-  ! LEFT_PAREN      [ reduce using rule 6 (empty -> .) ]
-  ! MINUS           [ reduce using rule 6 (empty -> .) ]
-
-    Expression                     shift and go to state 9
-    FileContent                    shift and go to state 41
-    Statement                      shift and go to state 4
-    empty                          shift and go to state 5
-    Assignment                     shift and go to state 6
-    PrintSomething                 shift and go to state 7
-    Something_Conditional          shift and go to state 8
 
 state 39
 
-    (13) Something_Conditional -> WHILE Expression LEFT_BRACKET . FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> WHILE Expression . LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+    LEFT_BRACKET    shift and go to state 57
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+
+state 40
+
+    (16) Something_Conditional -> FOREVER_LOOP LEFT_BRACKET . FileContent RIGHT_BRACKET
     (3) FileContent -> . FileContent Statement
     (4) FileContent -> . Statement
     (5) FileContent -> . empty
     (7) Statement -> . Assignment
     (8) Statement -> . PrintSomething
     (9) Statement -> . Something_Conditional
-    (10) Statement -> . Expression
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
     (6) empty -> .
-    (11) Assignment -> . IDENTIFIER EQUAL Expression
-    (23) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
-    (12) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (13) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
 
   ! shift/reduce conflict for IDENTIFIER resolved as shift
   ! shift/reduce conflict for PRINT resolved as shift
   ! shift/reduce conflict for IF resolved as shift
   ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for FOREVER_LOOP resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
   ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
   ! shift/reduce conflict for LEFT_PAREN resolved as shift
   ! shift/reduce conflict for MINUS resolved as shift
     RIGHT_BRACKET   reduce using rule 6 (empty -> .)
-    IDENTIFIER      shift and go to state 10
-    PRINT           shift and go to state 11
-    IF              shift and go to state 13
-    WHILE           shift and go to state 14
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
 
   ! IDENTIFIER      [ reduce using rule 6 (empty -> .) ]
   ! PRINT           [ reduce using rule 6 (empty -> .) ]
   ! IF              [ reduce using rule 6 (empty -> .) ]
   ! WHILE           [ reduce using rule 6 (empty -> .) ]
+  ! FOREVER_LOOP    [ reduce using rule 6 (empty -> .) ]
+  ! FOR             [ reduce using rule 6 (empty -> .) ]
   ! NUMBER          [ reduce using rule 6 (empty -> .) ]
   ! STRING          [ reduce using rule 6 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 6 (empty -> .) ]
   ! LEFT_PAREN      [ reduce using rule 6 (empty -> .) ]
   ! MINUS           [ reduce using rule 6 (empty -> .) ]
 
-    Expression                     shift and go to state 9
-    FileContent                    shift and go to state 42
+    FileContent                    shift and go to state 58
     Statement                      shift and go to state 4
     empty                          shift and go to state 5
     Assignment                     shift and go to state 6
     PrintSomething                 shift and go to state 7
     Something_Conditional          shift and go to state 8
-
-state 40
-
-    (23) PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .
-
-    ENDMARKER       reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    IDENTIFIER      reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    PRINT           reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    IF              reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    WHILE           reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    NUMBER          reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    STRING          reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    LEFT_PAREN      reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    MINUS           reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-    RIGHT_BRACKET   reduce using rule 23 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
-
+    ForLoop                        shift and go to state 9
+    Expression                     shift and go to state 10
 
 state 41
 
-    (12) Something_Conditional -> IF Expression LEFT_BRACKET FileContent . RIGHT_BRACKET
-    (3) FileContent -> FileContent . Statement
-    (7) Statement -> . Assignment
-    (8) Statement -> . PrintSomething
-    (9) Statement -> . Something_Conditional
-    (10) Statement -> . Expression
-    (11) Assignment -> . IDENTIFIER EQUAL Expression
-    (23) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
-    (12) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (13) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (12) ForLoop -> FOR IDENTIFIER . IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
 
-    RIGHT_BRACKET   shift and go to state 43
-    IDENTIFIER      shift and go to state 10
-    PRINT           shift and go to state 11
-    IF              shift and go to state 13
-    WHILE           shift and go to state 14
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    IN              shift and go to state 59
 
-    Expression                     shift and go to state 9
-    Statement                      shift and go to state 19
-    Assignment                     shift and go to state 6
-    PrintSomething                 shift and go to state 7
-    Something_Conditional          shift and go to state 8
 
 state 42
 
-    (13) Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent . RIGHT_BRACKET
-    (3) FileContent -> FileContent . Statement
-    (7) Statement -> . Assignment
-    (8) Statement -> . PrintSomething
-    (9) Statement -> . Something_Conditional
-    (10) Statement -> . Expression
-    (11) Assignment -> . IDENTIFIER EQUAL Expression
-    (23) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
-    (12) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (13) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
-    (14) Expression -> . Expression PLUS Expression
-    (15) Expression -> . Expression MINUS Expression
-    (16) Expression -> . Expression TIMES Expression
-    (17) Expression -> . Expression DIVIDE Expression
-    (18) Expression -> . NUMBER
-    (19) Expression -> . STRING
-    (20) Expression -> . IDENTIFIER
-    (21) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
-    (22) Expression -> . MINUS Expression
+    (32) Expression -> MINUS Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
 
-    RIGHT_BRACKET   shift and go to state 44
-    IDENTIFIER      shift and go to state 10
-    PRINT           shift and go to state 11
-    IF              shift and go to state 13
-    WHILE           shift and go to state 14
-    NUMBER          shift and go to state 16
-    STRING          shift and go to state 17
-    LEFT_PAREN      shift and go to state 12
-    MINUS           shift and go to state 15
+    PLUS            reduce using rule 32 (Expression -> MINUS Expression .)
+    MINUS           reduce using rule 32 (Expression -> MINUS Expression .)
+    TIMES           reduce using rule 32 (Expression -> MINUS Expression .)
+    DIVIDE          reduce using rule 32 (Expression -> MINUS Expression .)
+    GREAT_THAN      reduce using rule 32 (Expression -> MINUS Expression .)
+    LOWER_THAN      reduce using rule 32 (Expression -> MINUS Expression .)
+    GREAT_EQUAL     reduce using rule 32 (Expression -> MINUS Expression .)
+    LOWER_EQUAL     reduce using rule 32 (Expression -> MINUS Expression .)
+    EQUAL           reduce using rule 32 (Expression -> MINUS Expression .)
+    NOT_EQUAL       reduce using rule 32 (Expression -> MINUS Expression .)
+    ENDMARKER       reduce using rule 32 (Expression -> MINUS Expression .)
+    IDENTIFIER      reduce using rule 32 (Expression -> MINUS Expression .)
+    PRINT           reduce using rule 32 (Expression -> MINUS Expression .)
+    IF              reduce using rule 32 (Expression -> MINUS Expression .)
+    WHILE           reduce using rule 32 (Expression -> MINUS Expression .)
+    FOREVER_LOOP    reduce using rule 32 (Expression -> MINUS Expression .)
+    FOR             reduce using rule 32 (Expression -> MINUS Expression .)
+    NUMBER          reduce using rule 32 (Expression -> MINUS Expression .)
+    STRING          reduce using rule 32 (Expression -> MINUS Expression .)
+    FLOAT           reduce using rule 32 (Expression -> MINUS Expression .)
+    LEFT_PAREN      reduce using rule 32 (Expression -> MINUS Expression .)
+    RIGHT_PAREN     reduce using rule 32 (Expression -> MINUS Expression .)
+    LEFT_BRACKET    reduce using rule 32 (Expression -> MINUS Expression .)
+    RIGHT_BRACKET   reduce using rule 32 (Expression -> MINUS Expression .)
 
-    Expression                     shift and go to state 9
-    Statement                      shift and go to state 19
-    Assignment                     shift and go to state 6
-    PrintSomething                 shift and go to state 7
-    Something_Conditional          shift and go to state 8
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 26 ]
+  ! DIVIDE          [ shift and go to state 27 ]
+  ! GREAT_THAN      [ shift and go to state 28 ]
+  ! LOWER_THAN      [ shift and go to state 29 ]
+  ! GREAT_EQUAL     [ shift and go to state 30 ]
+  ! LOWER_EQUAL     [ shift and go to state 31 ]
+  ! EQUAL           [ shift and go to state 32 ]
+  ! NOT_EQUAL       [ shift and go to state 33 ]
+
 
 state 43
 
-    (12) Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .
+    (17) Expression -> Expression PLUS Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
 
-    ENDMARKER       reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    IDENTIFIER      reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    PRINT           reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    IF              reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    WHILE           reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    NUMBER          reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    STRING          reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    LEFT_PAREN      reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    MINUS           reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    RIGHT_BRACKET   reduce using rule 12 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    PLUS            reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    MINUS           reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    GREAT_THAN      reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    LOWER_THAN      reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    GREAT_EQUAL     reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    LOWER_EQUAL     reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    EQUAL           reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    NOT_EQUAL       reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    ENDMARKER       reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    IDENTIFIER      reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    PRINT           reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    IF              reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    WHILE           reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    FOREVER_LOOP    reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    FOR             reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    NUMBER          reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    STRING          reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    FLOAT           reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    LEFT_PAREN      reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    RIGHT_PAREN     reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    LEFT_BRACKET    reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    RIGHT_BRACKET   reduce using rule 17 (Expression -> Expression PLUS Expression .)
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+
+  ! TIMES           [ reduce using rule 17 (Expression -> Expression PLUS Expression .) ]
+  ! DIVIDE          [ reduce using rule 17 (Expression -> Expression PLUS Expression .) ]
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! GREAT_THAN      [ shift and go to state 28 ]
+  ! LOWER_THAN      [ shift and go to state 29 ]
+  ! GREAT_EQUAL     [ shift and go to state 30 ]
+  ! LOWER_EQUAL     [ shift and go to state 31 ]
+  ! EQUAL           [ shift and go to state 32 ]
+  ! NOT_EQUAL       [ shift and go to state 33 ]
 
 
 state 44
 
-    (13) Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .
+    (18) Expression -> Expression MINUS Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
 
-    ENDMARKER       reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    IDENTIFIER      reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    PRINT           reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    IF              reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    WHILE           reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    NUMBER          reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    STRING          reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    LEFT_PAREN      reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    MINUS           reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
-    RIGHT_BRACKET   reduce using rule 13 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    PLUS            reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    MINUS           reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    GREAT_THAN      reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    LOWER_THAN      reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    GREAT_EQUAL     reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    LOWER_EQUAL     reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    EQUAL           reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    NOT_EQUAL       reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    ENDMARKER       reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    IDENTIFIER      reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    PRINT           reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    IF              reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    WHILE           reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    FOREVER_LOOP    reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    FOR             reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    NUMBER          reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    STRING          reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    FLOAT           reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    LEFT_PAREN      reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    RIGHT_PAREN     reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    LEFT_BRACKET    reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    RIGHT_BRACKET   reduce using rule 18 (Expression -> Expression MINUS Expression .)
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+
+  ! TIMES           [ reduce using rule 18 (Expression -> Expression MINUS Expression .) ]
+  ! DIVIDE          [ reduce using rule 18 (Expression -> Expression MINUS Expression .) ]
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! GREAT_THAN      [ shift and go to state 28 ]
+  ! LOWER_THAN      [ shift and go to state 29 ]
+  ! GREAT_EQUAL     [ shift and go to state 30 ]
+  ! LOWER_EQUAL     [ shift and go to state 31 ]
+  ! EQUAL           [ shift and go to state 32 ]
+  ! NOT_EQUAL       [ shift and go to state 33 ]
+
+
+state 45
+
+    (19) Expression -> Expression TIMES Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+    PLUS            reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    MINUS           reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    TIMES           reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    DIVIDE          reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    GREAT_THAN      reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    LOWER_THAN      reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    GREAT_EQUAL     reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    LOWER_EQUAL     reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    EQUAL           reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    NOT_EQUAL       reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    ENDMARKER       reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    IDENTIFIER      reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    PRINT           reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    IF              reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    WHILE           reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    FOREVER_LOOP    reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    FOR             reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    NUMBER          reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    STRING          reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    FLOAT           reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    LEFT_PAREN      reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    RIGHT_PAREN     reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    LEFT_BRACKET    reduce using rule 19 (Expression -> Expression TIMES Expression .)
+    RIGHT_BRACKET   reduce using rule 19 (Expression -> Expression TIMES Expression .)
+
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 26 ]
+  ! DIVIDE          [ shift and go to state 27 ]
+  ! GREAT_THAN      [ shift and go to state 28 ]
+  ! LOWER_THAN      [ shift and go to state 29 ]
+  ! GREAT_EQUAL     [ shift and go to state 30 ]
+  ! LOWER_EQUAL     [ shift and go to state 31 ]
+  ! EQUAL           [ shift and go to state 32 ]
+  ! NOT_EQUAL       [ shift and go to state 33 ]
+
+
+state 46
+
+    (20) Expression -> Expression DIVIDE Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+    PLUS            reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    MINUS           reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    TIMES           reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    DIVIDE          reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    GREAT_THAN      reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    LOWER_THAN      reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    GREAT_EQUAL     reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    LOWER_EQUAL     reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    EQUAL           reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    NOT_EQUAL       reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    ENDMARKER       reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    IDENTIFIER      reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    PRINT           reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    IF              reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    WHILE           reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    FOREVER_LOOP    reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    FOR             reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    NUMBER          reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    STRING          reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    FLOAT           reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    LEFT_PAREN      reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    RIGHT_PAREN     reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    LEFT_BRACKET    reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+    RIGHT_BRACKET   reduce using rule 20 (Expression -> Expression DIVIDE Expression .)
+
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 26 ]
+  ! DIVIDE          [ shift and go to state 27 ]
+  ! GREAT_THAN      [ shift and go to state 28 ]
+  ! LOWER_THAN      [ shift and go to state 29 ]
+  ! GREAT_EQUAL     [ shift and go to state 30 ]
+  ! LOWER_EQUAL     [ shift and go to state 31 ]
+  ! EQUAL           [ shift and go to state 32 ]
+  ! NOT_EQUAL       [ shift and go to state 33 ]
+
+
+state 47
+
+    (21) Expression -> Expression GREAT_THAN Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GREAT_THAN resolved as shift
+  ! shift/reduce conflict for LOWER_THAN resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for LOWER_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+    ENDMARKER       reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    IDENTIFIER      reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    PRINT           reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    IF              reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    WHILE           reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    FOREVER_LOOP    reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    FOR             reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    NUMBER          reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    STRING          reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    FLOAT           reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    LEFT_PAREN      reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    RIGHT_PAREN     reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    LEFT_BRACKET    reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    RIGHT_BRACKET   reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .)
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+  ! PLUS            [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! MINUS           [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! TIMES           [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! DIVIDE          [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! GREAT_THAN      [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! LOWER_THAN      [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! LOWER_EQUAL     [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! EQUAL           [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 21 (Expression -> Expression GREAT_THAN Expression .) ]
+
+
+state 48
+
+    (22) Expression -> Expression LOWER_THAN Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GREAT_THAN resolved as shift
+  ! shift/reduce conflict for LOWER_THAN resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for LOWER_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+    ENDMARKER       reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    IDENTIFIER      reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    PRINT           reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    IF              reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    WHILE           reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    FOREVER_LOOP    reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    FOR             reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    NUMBER          reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    STRING          reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    FLOAT           reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    LEFT_PAREN      reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    RIGHT_PAREN     reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    LEFT_BRACKET    reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    RIGHT_BRACKET   reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .)
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+  ! PLUS            [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! MINUS           [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! TIMES           [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! DIVIDE          [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! GREAT_THAN      [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! LOWER_THAN      [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! LOWER_EQUAL     [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! EQUAL           [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 22 (Expression -> Expression LOWER_THAN Expression .) ]
+
+
+state 49
+
+    (23) Expression -> Expression GREAT_EQUAL Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GREAT_THAN resolved as shift
+  ! shift/reduce conflict for LOWER_THAN resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for LOWER_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+    ENDMARKER       reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    IDENTIFIER      reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    PRINT           reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    IF              reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    WHILE           reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    FOREVER_LOOP    reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    FOR             reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    NUMBER          reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    STRING          reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    FLOAT           reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    LEFT_PAREN      reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    RIGHT_PAREN     reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    LEFT_BRACKET    reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    RIGHT_BRACKET   reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .)
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+  ! PLUS            [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! MINUS           [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! TIMES           [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! DIVIDE          [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! GREAT_THAN      [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! LOWER_THAN      [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! LOWER_EQUAL     [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! EQUAL           [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 23 (Expression -> Expression GREAT_EQUAL Expression .) ]
+
+
+state 50
+
+    (24) Expression -> Expression LOWER_EQUAL Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GREAT_THAN resolved as shift
+  ! shift/reduce conflict for LOWER_THAN resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for LOWER_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+    ENDMARKER       reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    IDENTIFIER      reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    PRINT           reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    IF              reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    WHILE           reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    FOREVER_LOOP    reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    FOR             reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    NUMBER          reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    STRING          reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    FLOAT           reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    LEFT_PAREN      reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    RIGHT_PAREN     reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    LEFT_BRACKET    reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    RIGHT_BRACKET   reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .)
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+  ! PLUS            [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! MINUS           [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! TIMES           [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! DIVIDE          [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! GREAT_THAN      [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! LOWER_THAN      [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! LOWER_EQUAL     [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! EQUAL           [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 24 (Expression -> Expression LOWER_EQUAL Expression .) ]
+
+
+state 51
+
+    (25) Expression -> Expression EQUAL Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GREAT_THAN resolved as shift
+  ! shift/reduce conflict for LOWER_THAN resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for LOWER_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+    ENDMARKER       reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    IDENTIFIER      reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    PRINT           reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    IF              reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    WHILE           reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    FOREVER_LOOP    reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    FOR             reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    NUMBER          reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    STRING          reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    FLOAT           reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    LEFT_PAREN      reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    RIGHT_PAREN     reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    LEFT_BRACKET    reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    RIGHT_BRACKET   reduce using rule 25 (Expression -> Expression EQUAL Expression .)
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+  ! PLUS            [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! MINUS           [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! TIMES           [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! DIVIDE          [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! GREAT_THAN      [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! LOWER_THAN      [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! LOWER_EQUAL     [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! EQUAL           [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 25 (Expression -> Expression EQUAL Expression .) ]
+
+
+state 52
+
+    (26) Expression -> Expression NOT_EQUAL Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for GREAT_THAN resolved as shift
+  ! shift/reduce conflict for LOWER_THAN resolved as shift
+  ! shift/reduce conflict for GREAT_EQUAL resolved as shift
+  ! shift/reduce conflict for LOWER_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+    ENDMARKER       reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    IDENTIFIER      reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    PRINT           reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    IF              reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    WHILE           reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    FOREVER_LOOP    reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    FOR             reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    NUMBER          reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    STRING          reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    FLOAT           reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    LEFT_PAREN      reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    RIGHT_PAREN     reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    LEFT_BRACKET    reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    RIGHT_BRACKET   reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .)
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+  ! PLUS            [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! MINUS           [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! TIMES           [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! DIVIDE          [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! GREAT_THAN      [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! LOWER_THAN      [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! GREAT_EQUAL     [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! LOWER_EQUAL     [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! EQUAL           [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 26 (Expression -> Expression NOT_EQUAL Expression .) ]
+
+
+state 53
+
+    (13) Assignment -> IDENTIFIER ASSIGNMENT Expression .
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    ENDMARKER       reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    IDENTIFIER      reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    PRINT           reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    IF              reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    WHILE           reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    FOREVER_LOOP    reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    FOR             reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    NUMBER          reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    STRING          reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    FLOAT           reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    LEFT_PAREN      reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    RIGHT_BRACKET   reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .)
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+  ! MINUS           [ reduce using rule 13 (Assignment -> IDENTIFIER ASSIGNMENT Expression .) ]
+
+
+state 54
+
+    (33) PrintSomething -> PRINT LEFT_PAREN Expression . RIGHT_PAREN
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+    RIGHT_PAREN     shift and go to state 60
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+
+state 55
+
+    (31) Expression -> LEFT_PAREN Expression RIGHT_PAREN .
+
+    PLUS            reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    MINUS           reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    TIMES           reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    DIVIDE          reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    GREAT_THAN      reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    LOWER_THAN      reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    GREAT_EQUAL     reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    LOWER_EQUAL     reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    EQUAL           reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    NOT_EQUAL       reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    ENDMARKER       reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    IDENTIFIER      reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    PRINT           reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    IF              reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    WHILE           reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    FOREVER_LOOP    reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    FOR             reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    NUMBER          reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    STRING          reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    FLOAT           reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    LEFT_PAREN      reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    RIGHT_PAREN     reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    LEFT_BRACKET    reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    RIGHT_BRACKET   reduce using rule 31 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+
+
+state 56
+
+    (14) Something_Conditional -> IF Expression LEFT_BRACKET . FileContent RIGHT_BRACKET
+    (3) FileContent -> . FileContent Statement
+    (4) FileContent -> . Statement
+    (5) FileContent -> . empty
+    (7) Statement -> . Assignment
+    (8) Statement -> . PrintSomething
+    (9) Statement -> . Something_Conditional
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
+    (6) empty -> .
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for PRINT resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for FOREVER_LOOP resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for LEFT_PAREN resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+    RIGHT_BRACKET   reduce using rule 6 (empty -> .)
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+  ! IDENTIFIER      [ reduce using rule 6 (empty -> .) ]
+  ! PRINT           [ reduce using rule 6 (empty -> .) ]
+  ! IF              [ reduce using rule 6 (empty -> .) ]
+  ! WHILE           [ reduce using rule 6 (empty -> .) ]
+  ! FOREVER_LOOP    [ reduce using rule 6 (empty -> .) ]
+  ! FOR             [ reduce using rule 6 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 6 (empty -> .) ]
+  ! STRING          [ reduce using rule 6 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 6 (empty -> .) ]
+  ! LEFT_PAREN      [ reduce using rule 6 (empty -> .) ]
+  ! MINUS           [ reduce using rule 6 (empty -> .) ]
+
+    Expression                     shift and go to state 10
+    FileContent                    shift and go to state 61
+    Statement                      shift and go to state 4
+    empty                          shift and go to state 5
+    Assignment                     shift and go to state 6
+    PrintSomething                 shift and go to state 7
+    Something_Conditional          shift and go to state 8
+    ForLoop                        shift and go to state 9
+
+state 57
+
+    (15) Something_Conditional -> WHILE Expression LEFT_BRACKET . FileContent RIGHT_BRACKET
+    (3) FileContent -> . FileContent Statement
+    (4) FileContent -> . Statement
+    (5) FileContent -> . empty
+    (7) Statement -> . Assignment
+    (8) Statement -> . PrintSomething
+    (9) Statement -> . Something_Conditional
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
+    (6) empty -> .
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for PRINT resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for FOREVER_LOOP resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for LEFT_PAREN resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+    RIGHT_BRACKET   reduce using rule 6 (empty -> .)
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+  ! IDENTIFIER      [ reduce using rule 6 (empty -> .) ]
+  ! PRINT           [ reduce using rule 6 (empty -> .) ]
+  ! IF              [ reduce using rule 6 (empty -> .) ]
+  ! WHILE           [ reduce using rule 6 (empty -> .) ]
+  ! FOREVER_LOOP    [ reduce using rule 6 (empty -> .) ]
+  ! FOR             [ reduce using rule 6 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 6 (empty -> .) ]
+  ! STRING          [ reduce using rule 6 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 6 (empty -> .) ]
+  ! LEFT_PAREN      [ reduce using rule 6 (empty -> .) ]
+  ! MINUS           [ reduce using rule 6 (empty -> .) ]
+
+    Expression                     shift and go to state 10
+    FileContent                    shift and go to state 62
+    Statement                      shift and go to state 4
+    empty                          shift and go to state 5
+    Assignment                     shift and go to state 6
+    PrintSomething                 shift and go to state 7
+    Something_Conditional          shift and go to state 8
+    ForLoop                        shift and go to state 9
+
+state 58
+
+    (16) Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent . RIGHT_BRACKET
+    (3) FileContent -> FileContent . Statement
+    (7) Statement -> . Assignment
+    (8) Statement -> . PrintSomething
+    (9) Statement -> . Something_Conditional
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+    RIGHT_BRACKET   shift and go to state 63
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+    Statement                      shift and go to state 23
+    Assignment                     shift and go to state 6
+    PrintSomething                 shift and go to state 7
+    Something_Conditional          shift and go to state 8
+    ForLoop                        shift and go to state 9
+    Expression                     shift and go to state 10
+
+state 59
+
+    (12) ForLoop -> FOR IDENTIFIER IN . Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    IDENTIFIER      shift and go to state 37
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+    Expression                     shift and go to state 64
+
+state 60
+
+    (33) PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .
+
+    ENDMARKER       reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    IDENTIFIER      reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    PRINT           reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    IF              reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    WHILE           reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    FOREVER_LOOP    reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    FOR             reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    NUMBER          reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    STRING          reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    FLOAT           reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    LEFT_PAREN      reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    MINUS           reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    RIGHT_BRACKET   reduce using rule 33 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+
+
+state 61
+
+    (14) Something_Conditional -> IF Expression LEFT_BRACKET FileContent . RIGHT_BRACKET
+    (3) FileContent -> FileContent . Statement
+    (7) Statement -> . Assignment
+    (8) Statement -> . PrintSomething
+    (9) Statement -> . Something_Conditional
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+    RIGHT_BRACKET   shift and go to state 65
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+    Expression                     shift and go to state 10
+    Statement                      shift and go to state 23
+    Assignment                     shift and go to state 6
+    PrintSomething                 shift and go to state 7
+    Something_Conditional          shift and go to state 8
+    ForLoop                        shift and go to state 9
+
+state 62
+
+    (15) Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent . RIGHT_BRACKET
+    (3) FileContent -> FileContent . Statement
+    (7) Statement -> . Assignment
+    (8) Statement -> . PrintSomething
+    (9) Statement -> . Something_Conditional
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+    RIGHT_BRACKET   shift and go to state 66
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+    Expression                     shift and go to state 10
+    Statement                      shift and go to state 23
+    Assignment                     shift and go to state 6
+    PrintSomething                 shift and go to state 7
+    Something_Conditional          shift and go to state 8
+    ForLoop                        shift and go to state 9
+
+state 63
+
+    (16) Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .
+
+    ENDMARKER       reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    IDENTIFIER      reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    PRINT           reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    IF              reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    WHILE           reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FOREVER_LOOP    reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FOR             reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    NUMBER          reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    STRING          reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FLOAT           reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    LEFT_PAREN      reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    MINUS           reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    RIGHT_BRACKET   reduce using rule 16 (Something_Conditional -> FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET .)
+
+
+state 64
+
+    (12) ForLoop -> FOR IDENTIFIER IN Expression . LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> Expression . PLUS Expression
+    (18) Expression -> Expression . MINUS Expression
+    (19) Expression -> Expression . TIMES Expression
+    (20) Expression -> Expression . DIVIDE Expression
+    (21) Expression -> Expression . GREAT_THAN Expression
+    (22) Expression -> Expression . LOWER_THAN Expression
+    (23) Expression -> Expression . GREAT_EQUAL Expression
+    (24) Expression -> Expression . LOWER_EQUAL Expression
+    (25) Expression -> Expression . EQUAL Expression
+    (26) Expression -> Expression . NOT_EQUAL Expression
+
+    LEFT_BRACKET    shift and go to state 67
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIVIDE          shift and go to state 27
+    GREAT_THAN      shift and go to state 28
+    LOWER_THAN      shift and go to state 29
+    GREAT_EQUAL     shift and go to state 30
+    LOWER_EQUAL     shift and go to state 31
+    EQUAL           shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+
+
+state 65
+
+    (14) Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .
+
+    ENDMARKER       reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    IDENTIFIER      reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    PRINT           reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    IF              reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    WHILE           reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FOREVER_LOOP    reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FOR             reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    NUMBER          reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    STRING          reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FLOAT           reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    LEFT_PAREN      reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    MINUS           reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    RIGHT_BRACKET   reduce using rule 14 (Something_Conditional -> IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+
+
+state 66
+
+    (15) Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .
+
+    ENDMARKER       reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    IDENTIFIER      reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    PRINT           reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    IF              reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    WHILE           reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FOREVER_LOOP    reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FOR             reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    NUMBER          reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    STRING          reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FLOAT           reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    LEFT_PAREN      reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    MINUS           reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    RIGHT_BRACKET   reduce using rule 15 (Something_Conditional -> WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+
+
+state 67
+
+    (12) ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET . FileContent RIGHT_BRACKET
+    (3) FileContent -> . FileContent Statement
+    (4) FileContent -> . Statement
+    (5) FileContent -> . empty
+    (7) Statement -> . Assignment
+    (8) Statement -> . PrintSomething
+    (9) Statement -> . Something_Conditional
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
+    (6) empty -> .
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for PRINT resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+  ! shift/reduce conflict for FOREVER_LOOP resolved as shift
+  ! shift/reduce conflict for FOR resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for LEFT_PAREN resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+    RIGHT_BRACKET   reduce using rule 6 (empty -> .)
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+  ! IDENTIFIER      [ reduce using rule 6 (empty -> .) ]
+  ! PRINT           [ reduce using rule 6 (empty -> .) ]
+  ! IF              [ reduce using rule 6 (empty -> .) ]
+  ! WHILE           [ reduce using rule 6 (empty -> .) ]
+  ! FOREVER_LOOP    [ reduce using rule 6 (empty -> .) ]
+  ! FOR             [ reduce using rule 6 (empty -> .) ]
+  ! NUMBER          [ reduce using rule 6 (empty -> .) ]
+  ! STRING          [ reduce using rule 6 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 6 (empty -> .) ]
+  ! LEFT_PAREN      [ reduce using rule 6 (empty -> .) ]
+  ! MINUS           [ reduce using rule 6 (empty -> .) ]
+
+    Expression                     shift and go to state 10
+    FileContent                    shift and go to state 68
+    Statement                      shift and go to state 4
+    empty                          shift and go to state 5
+    Assignment                     shift and go to state 6
+    PrintSomething                 shift and go to state 7
+    Something_Conditional          shift and go to state 8
+    ForLoop                        shift and go to state 9
+
+state 68
+
+    (12) ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent . RIGHT_BRACKET
+    (3) FileContent -> FileContent . Statement
+    (7) Statement -> . Assignment
+    (8) Statement -> . PrintSomething
+    (9) Statement -> . Something_Conditional
+    (10) Statement -> . ForLoop
+    (11) Statement -> . Expression
+    (13) Assignment -> . IDENTIFIER ASSIGNMENT Expression
+    (33) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (14) Something_Conditional -> . IF Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (15) Something_Conditional -> . WHILE Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (16) Something_Conditional -> . FOREVER_LOOP LEFT_BRACKET FileContent RIGHT_BRACKET
+    (12) ForLoop -> . FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET
+    (17) Expression -> . Expression PLUS Expression
+    (18) Expression -> . Expression MINUS Expression
+    (19) Expression -> . Expression TIMES Expression
+    (20) Expression -> . Expression DIVIDE Expression
+    (21) Expression -> . Expression GREAT_THAN Expression
+    (22) Expression -> . Expression LOWER_THAN Expression
+    (23) Expression -> . Expression GREAT_EQUAL Expression
+    (24) Expression -> . Expression LOWER_EQUAL Expression
+    (25) Expression -> . Expression EQUAL Expression
+    (26) Expression -> . Expression NOT_EQUAL Expression
+    (27) Expression -> . NUMBER
+    (28) Expression -> . STRING
+    (29) Expression -> . IDENTIFIER
+    (30) Expression -> . FLOAT
+    (31) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (32) Expression -> . MINUS Expression
+
+    RIGHT_BRACKET   shift and go to state 69
+    IDENTIFIER      shift and go to state 11
+    PRINT           shift and go to state 12
+    IF              shift and go to state 14
+    WHILE           shift and go to state 15
+    FOREVER_LOOP    shift and go to state 16
+    FOR             shift and go to state 17
+    NUMBER          shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT           shift and go to state 21
+    LEFT_PAREN      shift and go to state 13
+    MINUS           shift and go to state 18
+
+    Expression                     shift and go to state 10
+    Statement                      shift and go to state 23
+    Assignment                     shift and go to state 6
+    PrintSomething                 shift and go to state 7
+    Something_Conditional          shift and go to state 8
+    ForLoop                        shift and go to state 9
+
+state 69
+
+    (12) ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .
+
+    ENDMARKER       reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    IDENTIFIER      reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    PRINT           reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    IF              reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    WHILE           reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FOREVER_LOOP    reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FOR             reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    NUMBER          reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    STRING          reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    FLOAT           reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    LEFT_PAREN      reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    MINUS           reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
+    RIGHT_BRACKET   reduce using rule 12 (ForLoop -> FOR IDENTIFIER IN Expression LEFT_BRACKET FileContent RIGHT_BRACKET .)
 
 WARNING: 
 WARNING: Conflicts:
@@ -1114,25 +2540,116 @@ WARNING: shift/reduce conflict for IDENTIFIER in state 0 resolved as shift
 WARNING: shift/reduce conflict for PRINT in state 0 resolved as shift
 WARNING: shift/reduce conflict for IF in state 0 resolved as shift
 WARNING: shift/reduce conflict for WHILE in state 0 resolved as shift
+WARNING: shift/reduce conflict for FOREVER_LOOP in state 0 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 0 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 0 resolved as shift
 WARNING: shift/reduce conflict for STRING in state 0 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 0 resolved as shift
 WARNING: shift/reduce conflict for LEFT_PAREN in state 0 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 0 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 9 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 35 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 38 resolved as shift
-WARNING: shift/reduce conflict for PRINT in state 38 resolved as shift
-WARNING: shift/reduce conflict for IF in state 38 resolved as shift
-WARNING: shift/reduce conflict for WHILE in state 38 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 38 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 38 resolved as shift
-WARNING: shift/reduce conflict for LEFT_PAREN in state 38 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 38 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 39 resolved as shift
-WARNING: shift/reduce conflict for PRINT in state 39 resolved as shift
-WARNING: shift/reduce conflict for IF in state 39 resolved as shift
-WARNING: shift/reduce conflict for WHILE in state 39 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 39 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 39 resolved as shift
-WARNING: shift/reduce conflict for LEFT_PAREN in state 39 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 10 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 40 resolved as shift
+WARNING: shift/reduce conflict for PRINT in state 40 resolved as shift
+WARNING: shift/reduce conflict for IF in state 40 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 40 resolved as shift
+WARNING: shift/reduce conflict for FOREVER_LOOP in state 40 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 40 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 40 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 40 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 40 resolved as shift
+WARNING: shift/reduce conflict for LEFT_PAREN in state 40 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 47 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 47 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 47 resolved as shift
+WARNING: shift/reduce conflict for GREAT_THAN in state 47 resolved as shift
+WARNING: shift/reduce conflict for LOWER_THAN in state 47 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for LOWER_EQUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 47 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 48 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 48 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 48 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 48 resolved as shift
+WARNING: shift/reduce conflict for GREAT_THAN in state 48 resolved as shift
+WARNING: shift/reduce conflict for LOWER_THAN in state 48 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 48 resolved as shift
+WARNING: shift/reduce conflict for LOWER_EQUAL in state 48 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 48 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 48 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 49 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 49 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 49 resolved as shift
+WARNING: shift/reduce conflict for GREAT_THAN in state 49 resolved as shift
+WARNING: shift/reduce conflict for LOWER_THAN in state 49 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for LOWER_EQUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 49 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 50 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 50 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 50 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 50 resolved as shift
+WARNING: shift/reduce conflict for GREAT_THAN in state 50 resolved as shift
+WARNING: shift/reduce conflict for LOWER_THAN in state 50 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 50 resolved as shift
+WARNING: shift/reduce conflict for LOWER_EQUAL in state 50 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 50 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 50 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 51 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 51 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 51 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 51 resolved as shift
+WARNING: shift/reduce conflict for GREAT_THAN in state 51 resolved as shift
+WARNING: shift/reduce conflict for LOWER_THAN in state 51 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 51 resolved as shift
+WARNING: shift/reduce conflict for LOWER_EQUAL in state 51 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 51 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 51 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 52 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 52 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 52 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 52 resolved as shift
+WARNING: shift/reduce conflict for GREAT_THAN in state 52 resolved as shift
+WARNING: shift/reduce conflict for LOWER_THAN in state 52 resolved as shift
+WARNING: shift/reduce conflict for GREAT_EQUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for LOWER_EQUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 53 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 56 resolved as shift
+WARNING: shift/reduce conflict for PRINT in state 56 resolved as shift
+WARNING: shift/reduce conflict for IF in state 56 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 56 resolved as shift
+WARNING: shift/reduce conflict for FOREVER_LOOP in state 56 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 56 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 56 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 56 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 56 resolved as shift
+WARNING: shift/reduce conflict for LEFT_PAREN in state 56 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 56 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 57 resolved as shift
+WARNING: shift/reduce conflict for PRINT in state 57 resolved as shift
+WARNING: shift/reduce conflict for IF in state 57 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 57 resolved as shift
+WARNING: shift/reduce conflict for FOREVER_LOOP in state 57 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 57 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 57 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 57 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 57 resolved as shift
+WARNING: shift/reduce conflict for LEFT_PAREN in state 57 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 57 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 67 resolved as shift
+WARNING: shift/reduce conflict for PRINT in state 67 resolved as shift
+WARNING: shift/reduce conflict for IF in state 67 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 67 resolved as shift
+WARNING: shift/reduce conflict for FOREVER_LOOP in state 67 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 67 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 67 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 67 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 67 resolved as shift
+WARNING: shift/reduce conflict for LEFT_PAREN in state 67 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 67 resolved as shift

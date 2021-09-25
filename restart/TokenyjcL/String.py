@@ -13,6 +13,5 @@ from restart.TokenyjcL.Token import Token_yjcL
 
 class String_yjcL(Token_yjcL):
     def __init__(self,valueDict):
-        self.type_=valueDict["type"]
-        self.value=valueDict["value"]
+        super(String_yjcL, self).__init__(valueDict)
 

@@ -4,7 +4,7 @@
 @IDE      :PyCharm
 @Project  :yjcL 
 @USER     :yanyin
-@File     :BinaryOperation_yjcL.py
+@File     :BinaryOperation.py
 @Author   :yujiecong
 @Date     :2021/8/31 15:40 
 '''
@@ -12,7 +12,7 @@ import pprint
 
 
 from restart.Enum.Enum import ExpressionType
-from restart.ExpressionyjcL.Expression_yjcL import Expression_yjcL
+from restart.ExpressionyjcL.Expression import Expression_yjcL
 from restart.TokenyjcL.Token import Token_yjcL
 
 
@@ -60,7 +60,7 @@ class BinaryOperation_yjcL(Expression_yjcL):
         # lValue=Token_yjcL.getValue(left)
         # rValue=Token_yjcL.getValue(right)
 
-
+        resultValue=None
         if op=="+":
             resultValue=lValue+rValue
         elif op=="-":
@@ -69,15 +69,25 @@ class BinaryOperation_yjcL(Expression_yjcL):
             resultValue = lValue * rValue
         elif op=="/":
             resultValue = lValue / rValue
-
+        elif op==">"or op=="大于":
+            resultValue = lValue > rValue
+        elif op=="<"or op=="小于":
+            resultValue = lValue < rValue
+        elif op==">="or op=="大于等于":
+            resultValue = lValue >= rValue
+        elif op=="<="or op=="小于等于":
+            resultValue = lValue <= rValue
+        elif op=="==" or op=="相等":
+            resultValue = lValue == rValue
+        elif op=="!="or op=="不等":
+            resultValue = lValue != rValue
         return resultValue
 
-
-    def __repr__(self):
-        return self.value
-
     @staticmethod
-    def getBinaryOperationValue(valueDict):
+    def getExpressionValue(valueDict):
 
-        return BinaryOperation_yjcL(valueDict).value
+        if valueDict["type"]==ExpressionType.BinaryOperation:
+            return BinaryOperation_yjcL(valueDict).value
+        else:
+            return Token_yjcL.getValue(valueDict)
 

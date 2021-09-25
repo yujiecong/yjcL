@@ -4,13 +4,13 @@
 @IDE      :PyCharm
 @Project  :yjcL 
 @USER     :yanyin
-@File     :Identifier.py
+@File     :Float.py
 @Author   :yujiecong
-@Date     :2021/8/31 15:39 
+@Date     :2021/9/1 16:19 
 '''
 from restart.TokenyjcL.Token import Token_yjcL
 
 
-class Identifier_yjcL(Token_yjcL):
+class Float_yjcL(Token_yjcL):
     def __init__(self,valueDict):
-        super(Identifier_yjcL, self).__init__(valueDict)
+        super(Float_yjcL, self).__init__(valueDict)

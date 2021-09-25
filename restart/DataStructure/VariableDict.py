@@ -14,10 +14,6 @@ class VariableDict(dict):
             raise KeyError("不存在的屑变量%s"%item)
         return self.__dict__[item]
 
-
-
-
-
     def pprint(self):
         pprint.pprint(self.__dict__)
     def __repr__(self):

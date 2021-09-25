@@ -4,27 +4,46 @@ from ply.yacc import yacc
 lex.eof = False
 reserved={
     "打印":"PRINT",
+    "print": "PRINT",
+    "出": "PRINT",
     "当":"WHILE",
     "while":"WHILE",
     "若":"IF",
     "if":"IF",
     "如果":"IF",
     "要是":"IF",
+    "循环":"FOR",
+    "遍历":"FOR",
+    "for":"FOR",
+    "in":"IN",
+
+    "死循环":"FOREVER_LOOP",
+    "foreverLoop":"FOREVER_LOOP",
+
+
 }
 tokens=[
     "IDENTIFIER",
     "STRING",
-    "EQUAL",
+    "ASSIGNMENT",
     "NUMBER",
     "LEFT_PAREN",
     "RIGHT_PAREN",
     "ENDMARKER",
     "LEFT_BRACKET",
     "RIGHT_BRACKET",
+    "FLOAT",
    'PLUS',
    'MINUS',
    'TIMES',
    'DIVIDE',
+    "GREAT_THAN",
+    "LOWER_THAN",
+    "GREAT_EQUAL",
+    "LOWER_EQUAL",
+    "EQUAL",
+    "NOT_EQUAL"
+
 
 ]+list(set(reserved.values()))
 
@@ -35,9 +54,19 @@ t_MINUS   = r'-'
 t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
 
+
+t_GREAT_THAN=r">"
+t_LOWER_THAN=r"<"
+t_GREAT_EQUAL=r">="
+t_LOWER_EQUAL=r"<="
+t_EQUAL=r"=="
+t_NOT_EQUAL=r"\!="
+
+
+
 t_LEFT_BRACKET=r"\{"
 t_RIGHT_BRACKET=r"\}"
-t_EQUAL=r"="
+t_ASSIGNMENT=r"="
 t_LEFT_PAREN=r"\("
 t_RIGHT_PAREN=r"\)"
 
@@ -50,6 +79,15 @@ def t_STRING(t):
     t.value = {
         "value":t.value[1:-1],
         "type":"NUMBER"
+    }
+    return t
+
+
+def t_FLOAT(t):
+    r'\d+\.\d+'
+    t.value = {
+        "value":float(t.value),
+        "type":"FLOAT"
     }
     return t
 

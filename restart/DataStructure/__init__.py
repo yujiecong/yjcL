@@ -4,11 +4,7 @@
 @IDE      :PyCharm
 @Project  :yjcL 
 @USER     :yanyin
-@File     :SourceCode_yjcL.py
+@File     :__init__.py.py
 @Author   :yujiecong
-@Date     :2021/8/31 16:07 
+@Date     :2021/9/1 11:03 
 '''
-
-
-class SourceCode_yjcL:
-    pass
