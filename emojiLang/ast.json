@@ -1,0 +1,60 @@
+{
+    "type": "SourceCode",
+    "value": {
+        "type": "FileContent",
+        "value": [
+            {
+                "identifier": {
+                    "value": "\ud83d\ude37",
+                    "type": "IDENTIFIER"
+                },
+                "expression": {
+                    "value": 1,
+                    "type": "NUMBER"
+                },
+                "type": "Assignment"
+            },
+            {
+                "identifier": {
+                    "value": "\ud83d\ude16",
+                    "type": "IDENTIFIER"
+                },
+                "expression": {
+                    "value": 1,
+                    "type": "NUMBER"
+                },
+                "type": "Assignment"
+            },
+            {
+                "identifier": {
+                    "value": "\ud83d\ude13",
+                    "type": "IDENTIFIER"
+                },
+                "expression": {
+                    "left": {
+                        "value": "\ud83d\ude37",
+                        "type": "IDENTIFIER"
+                    },
+                    "right": {
+                        "value": "\ud83d\ude16",
+                        "type": "IDENTIFIER"
+                    },
+                    "op": "+",
+                    "type": "BinaryOperation"
+                },
+                "type": "Assignment"
+            },
+            {
+                "value": {
+                    "value": "\ud83d\ude13",
+                    "type": "IDENTIFIER"
+                },
+                "type": "PrintSomething",
+                "print_key": {
+                    "value": "\ud83d\udcc7",
+                    "type": "PRINT"
+                }
+            }
+        ]
+    }
+}

@@ -43,7 +43,7 @@ class yjcLAST():
 
         # pprint.pprint(self.astJson)
 
-    def json2ASObjectTree(self, ast,objs,recursion=False):
+    def json2ASObjectTree(self, ast,objs):
         """
         根据json构建对象树 递归定义
         :return:
@@ -62,7 +62,7 @@ class yjcLAST():
             elif statementType == StatementType.Something_Conditional:
                 # pprint.pprint(statement)
                 statementObject = Something_Conditional_yjcL(statement)
-                statementObject.statementObjects=self.json2ASObjectTree(statementObject.subCode, [], recursion=True)
+                statementObject.statementObjects=self.json2ASObjectTree(statementObject.subCode, [])
 
             objs.append(statementObject)
         return objs

@@ -20,7 +20,6 @@ class Assignment_yjcL(Statement_yjcL):
         self.raw = value
         self.type_ = StatementType.Assignment
         self.identifier=self.raw["identifier"]
-
         self.expression = self.raw["expression"]
         # {'type': 'Assignment', 'value': ('圆圆是屑', 1)}
 

@@ -1,0 +1,676 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> SourceCode
+Rule 1     SourceCode -> ENDMARKER
+Rule 2     SourceCode -> FileContent ENDMARKER
+Rule 3     FileContent -> FileContent Statement
+Rule 4     FileContent -> Statement
+Rule 5     Statement -> Assignment
+Rule 6     Statement -> PrintSomething
+Rule 7     Statement -> Expression
+Rule 8     Assignment -> IDENTIFIER EQUAL Expression
+Rule 9     Expression -> Expression PLUS Expression
+Rule 10    Expression -> Expression MINUS Expression
+Rule 11    Expression -> Expression TIMES Expression
+Rule 12    Expression -> Expression DIVIDE Expression
+Rule 13    Expression -> NUMBER
+Rule 14    Expression -> STRING
+Rule 15    Expression -> IDENTIFIER
+Rule 16    Expression -> LEFT_PAREN Expression RIGHT_PAREN
+Rule 17    Expression -> MINUS Expression
+Rule 18    PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN
+
+Terminals, with rules where they appear
+
+DIVIDE               : 12
+ENDMARKER            : 1 2
+EQUAL                : 8
+IDENTIFIER           : 8 15
+LEFT_PAREN           : 16 18
+MINUS                : 10 17
+NUMBER               : 13
+PLUS                 : 9
+PRINT                : 18
+RIGHT_PAREN          : 16 18
+STRING               : 14
+TIMES                : 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+Assignment           : 5
+Expression           : 7 8 9 9 10 10 11 11 12 12 16 17 18
+FileContent          : 2 3
+PrintSomething       : 6
+SourceCode           : 0
+Statement            : 3 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . SourceCode
+    (1) SourceCode -> . ENDMARKER
+    (2) SourceCode -> . FileContent ENDMARKER
+    (3) FileContent -> . FileContent Statement
+    (4) FileContent -> . Statement
+    (5) Statement -> . Assignment
+    (6) Statement -> . PrintSomething
+    (7) Statement -> . Expression
+    (8) Assignment -> . IDENTIFIER EQUAL Expression
+    (18) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    ENDMARKER       shift and go to state 2
+    IDENTIFIER      shift and go to state 8
+    PRINT           shift and go to state 9
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    SourceCode                     shift and go to state 1
+    FileContent                    shift and go to state 3
+    Statement                      shift and go to state 4
+    Assignment                     shift and go to state 5
+    PrintSomething                 shift and go to state 6
+    Expression                     shift and go to state 7
+
+state 1
+
+    (0) S' -> SourceCode .
+
+
+
+state 2
+
+    (1) SourceCode -> ENDMARKER .
+
+    $end            reduce using rule 1 (SourceCode -> ENDMARKER .)
+
+
+state 3
+
+    (2) SourceCode -> FileContent . ENDMARKER
+    (3) FileContent -> FileContent . Statement
+    (5) Statement -> . Assignment
+    (6) Statement -> . PrintSomething
+    (7) Statement -> . Expression
+    (8) Assignment -> . IDENTIFIER EQUAL Expression
+    (18) PrintSomething -> . PRINT LEFT_PAREN Expression RIGHT_PAREN
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    ENDMARKER       shift and go to state 14
+    IDENTIFIER      shift and go to state 8
+    PRINT           shift and go to state 9
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Statement                      shift and go to state 15
+    Assignment                     shift and go to state 5
+    PrintSomething                 shift and go to state 6
+    Expression                     shift and go to state 7
+
+state 4
+
+    (4) FileContent -> Statement .
+
+    ENDMARKER       reduce using rule 4 (FileContent -> Statement .)
+    IDENTIFIER      reduce using rule 4 (FileContent -> Statement .)
+    PRINT           reduce using rule 4 (FileContent -> Statement .)
+    NUMBER          reduce using rule 4 (FileContent -> Statement .)
+    STRING          reduce using rule 4 (FileContent -> Statement .)
+    LEFT_PAREN      reduce using rule 4 (FileContent -> Statement .)
+    MINUS           reduce using rule 4 (FileContent -> Statement .)
+
+
+state 5
+
+    (5) Statement -> Assignment .
+
+    ENDMARKER       reduce using rule 5 (Statement -> Assignment .)
+    IDENTIFIER      reduce using rule 5 (Statement -> Assignment .)
+    PRINT           reduce using rule 5 (Statement -> Assignment .)
+    NUMBER          reduce using rule 5 (Statement -> Assignment .)
+    STRING          reduce using rule 5 (Statement -> Assignment .)
+    LEFT_PAREN      reduce using rule 5 (Statement -> Assignment .)
+    MINUS           reduce using rule 5 (Statement -> Assignment .)
+
+
+state 6
+
+    (6) Statement -> PrintSomething .
+
+    ENDMARKER       reduce using rule 6 (Statement -> PrintSomething .)
+    IDENTIFIER      reduce using rule 6 (Statement -> PrintSomething .)
+    PRINT           reduce using rule 6 (Statement -> PrintSomething .)
+    NUMBER          reduce using rule 6 (Statement -> PrintSomething .)
+    STRING          reduce using rule 6 (Statement -> PrintSomething .)
+    LEFT_PAREN      reduce using rule 6 (Statement -> PrintSomething .)
+    MINUS           reduce using rule 6 (Statement -> PrintSomething .)
+
+
+state 7
+
+    (7) Statement -> Expression .
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    ENDMARKER       reduce using rule 7 (Statement -> Expression .)
+    IDENTIFIER      reduce using rule 7 (Statement -> Expression .)
+    PRINT           reduce using rule 7 (Statement -> Expression .)
+    NUMBER          reduce using rule 7 (Statement -> Expression .)
+    STRING          reduce using rule 7 (Statement -> Expression .)
+    LEFT_PAREN      reduce using rule 7 (Statement -> Expression .)
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! MINUS           [ reduce using rule 7 (Statement -> Expression .) ]
+
+
+state 8
+
+    (8) Assignment -> IDENTIFIER . EQUAL Expression
+    (15) Expression -> IDENTIFIER .
+
+    EQUAL           shift and go to state 20
+    PLUS            reduce using rule 15 (Expression -> IDENTIFIER .)
+    MINUS           reduce using rule 15 (Expression -> IDENTIFIER .)
+    TIMES           reduce using rule 15 (Expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 15 (Expression -> IDENTIFIER .)
+    ENDMARKER       reduce using rule 15 (Expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 15 (Expression -> IDENTIFIER .)
+    PRINT           reduce using rule 15 (Expression -> IDENTIFIER .)
+    NUMBER          reduce using rule 15 (Expression -> IDENTIFIER .)
+    STRING          reduce using rule 15 (Expression -> IDENTIFIER .)
+    LEFT_PAREN      reduce using rule 15 (Expression -> IDENTIFIER .)
+
+
+state 9
+
+    (18) PrintSomething -> PRINT . LEFT_PAREN Expression RIGHT_PAREN
+
+    LEFT_PAREN      shift and go to state 21
+
+
+state 10
+
+    (16) Expression -> LEFT_PAREN . Expression RIGHT_PAREN
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    IDENTIFIER      shift and go to state 23
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Expression                     shift and go to state 22
+
+state 11
+
+    (17) Expression -> MINUS . Expression
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    IDENTIFIER      shift and go to state 23
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Expression                     shift and go to state 24
+
+state 12
+
+    (13) Expression -> NUMBER .
+
+    PLUS            reduce using rule 13 (Expression -> NUMBER .)
+    MINUS           reduce using rule 13 (Expression -> NUMBER .)
+    TIMES           reduce using rule 13 (Expression -> NUMBER .)
+    DIVIDE          reduce using rule 13 (Expression -> NUMBER .)
+    ENDMARKER       reduce using rule 13 (Expression -> NUMBER .)
+    IDENTIFIER      reduce using rule 13 (Expression -> NUMBER .)
+    PRINT           reduce using rule 13 (Expression -> NUMBER .)
+    NUMBER          reduce using rule 13 (Expression -> NUMBER .)
+    STRING          reduce using rule 13 (Expression -> NUMBER .)
+    LEFT_PAREN      reduce using rule 13 (Expression -> NUMBER .)
+    RIGHT_PAREN     reduce using rule 13 (Expression -> NUMBER .)
+
+
+state 13
+
+    (14) Expression -> STRING .
+
+    PLUS            reduce using rule 14 (Expression -> STRING .)
+    MINUS           reduce using rule 14 (Expression -> STRING .)
+    TIMES           reduce using rule 14 (Expression -> STRING .)
+    DIVIDE          reduce using rule 14 (Expression -> STRING .)
+    ENDMARKER       reduce using rule 14 (Expression -> STRING .)
+    IDENTIFIER      reduce using rule 14 (Expression -> STRING .)
+    PRINT           reduce using rule 14 (Expression -> STRING .)
+    NUMBER          reduce using rule 14 (Expression -> STRING .)
+    STRING          reduce using rule 14 (Expression -> STRING .)
+    LEFT_PAREN      reduce using rule 14 (Expression -> STRING .)
+    RIGHT_PAREN     reduce using rule 14 (Expression -> STRING .)
+
+
+state 14
+
+    (2) SourceCode -> FileContent ENDMARKER .
+
+    $end            reduce using rule 2 (SourceCode -> FileContent ENDMARKER .)
+
+
+state 15
+
+    (3) FileContent -> FileContent Statement .
+
+    ENDMARKER       reduce using rule 3 (FileContent -> FileContent Statement .)
+    IDENTIFIER      reduce using rule 3 (FileContent -> FileContent Statement .)
+    PRINT           reduce using rule 3 (FileContent -> FileContent Statement .)
+    NUMBER          reduce using rule 3 (FileContent -> FileContent Statement .)
+    STRING          reduce using rule 3 (FileContent -> FileContent Statement .)
+    LEFT_PAREN      reduce using rule 3 (FileContent -> FileContent Statement .)
+    MINUS           reduce using rule 3 (FileContent -> FileContent Statement .)
+
+
+state 16
+
+    (9) Expression -> Expression PLUS . Expression
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    IDENTIFIER      shift and go to state 23
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Expression                     shift and go to state 25
+
+state 17
+
+    (10) Expression -> Expression MINUS . Expression
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    IDENTIFIER      shift and go to state 23
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Expression                     shift and go to state 26
+
+state 18
+
+    (11) Expression -> Expression TIMES . Expression
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    IDENTIFIER      shift and go to state 23
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Expression                     shift and go to state 27
+
+state 19
+
+    (12) Expression -> Expression DIVIDE . Expression
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    IDENTIFIER      shift and go to state 23
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Expression                     shift and go to state 28
+
+state 20
+
+    (8) Assignment -> IDENTIFIER EQUAL . Expression
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    IDENTIFIER      shift and go to state 23
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Expression                     shift and go to state 29
+
+state 21
+
+    (18) PrintSomething -> PRINT LEFT_PAREN . Expression RIGHT_PAREN
+    (9) Expression -> . Expression PLUS Expression
+    (10) Expression -> . Expression MINUS Expression
+    (11) Expression -> . Expression TIMES Expression
+    (12) Expression -> . Expression DIVIDE Expression
+    (13) Expression -> . NUMBER
+    (14) Expression -> . STRING
+    (15) Expression -> . IDENTIFIER
+    (16) Expression -> . LEFT_PAREN Expression RIGHT_PAREN
+    (17) Expression -> . MINUS Expression
+
+    NUMBER          shift and go to state 12
+    STRING          shift and go to state 13
+    IDENTIFIER      shift and go to state 23
+    LEFT_PAREN      shift and go to state 10
+    MINUS           shift and go to state 11
+
+    Expression                     shift and go to state 30
+
+state 22
+
+    (16) Expression -> LEFT_PAREN Expression . RIGHT_PAREN
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+    RIGHT_PAREN     shift and go to state 31
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+
+state 23
+
+    (15) Expression -> IDENTIFIER .
+
+    RIGHT_PAREN     reduce using rule 15 (Expression -> IDENTIFIER .)
+    PLUS            reduce using rule 15 (Expression -> IDENTIFIER .)
+    MINUS           reduce using rule 15 (Expression -> IDENTIFIER .)
+    TIMES           reduce using rule 15 (Expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 15 (Expression -> IDENTIFIER .)
+    ENDMARKER       reduce using rule 15 (Expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 15 (Expression -> IDENTIFIER .)
+    PRINT           reduce using rule 15 (Expression -> IDENTIFIER .)
+    NUMBER          reduce using rule 15 (Expression -> IDENTIFIER .)
+    STRING          reduce using rule 15 (Expression -> IDENTIFIER .)
+    LEFT_PAREN      reduce using rule 15 (Expression -> IDENTIFIER .)
+
+
+state 24
+
+    (17) Expression -> MINUS Expression .
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+    PLUS            reduce using rule 17 (Expression -> MINUS Expression .)
+    MINUS           reduce using rule 17 (Expression -> MINUS Expression .)
+    TIMES           reduce using rule 17 (Expression -> MINUS Expression .)
+    DIVIDE          reduce using rule 17 (Expression -> MINUS Expression .)
+    ENDMARKER       reduce using rule 17 (Expression -> MINUS Expression .)
+    IDENTIFIER      reduce using rule 17 (Expression -> MINUS Expression .)
+    PRINT           reduce using rule 17 (Expression -> MINUS Expression .)
+    NUMBER          reduce using rule 17 (Expression -> MINUS Expression .)
+    STRING          reduce using rule 17 (Expression -> MINUS Expression .)
+    LEFT_PAREN      reduce using rule 17 (Expression -> MINUS Expression .)
+    RIGHT_PAREN     reduce using rule 17 (Expression -> MINUS Expression .)
+
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 25
+
+    (9) Expression -> Expression PLUS Expression .
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+    PLUS            reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    MINUS           reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    ENDMARKER       reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    IDENTIFIER      reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    PRINT           reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    NUMBER          reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    STRING          reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    LEFT_PAREN      reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    RIGHT_PAREN     reduce using rule 9 (Expression -> Expression PLUS Expression .)
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! TIMES           [ reduce using rule 9 (Expression -> Expression PLUS Expression .) ]
+  ! DIVIDE          [ reduce using rule 9 (Expression -> Expression PLUS Expression .) ]
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+
+
+state 26
+
+    (10) Expression -> Expression MINUS Expression .
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+    PLUS            reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    MINUS           reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    ENDMARKER       reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    IDENTIFIER      reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    PRINT           reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    NUMBER          reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    STRING          reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    LEFT_PAREN      reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    RIGHT_PAREN     reduce using rule 10 (Expression -> Expression MINUS Expression .)
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! TIMES           [ reduce using rule 10 (Expression -> Expression MINUS Expression .) ]
+  ! DIVIDE          [ reduce using rule 10 (Expression -> Expression MINUS Expression .) ]
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+
+
+state 27
+
+    (11) Expression -> Expression TIMES Expression .
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+    PLUS            reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    MINUS           reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    TIMES           reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    DIVIDE          reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    ENDMARKER       reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    IDENTIFIER      reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    PRINT           reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    NUMBER          reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    STRING          reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    LEFT_PAREN      reduce using rule 11 (Expression -> Expression TIMES Expression .)
+    RIGHT_PAREN     reduce using rule 11 (Expression -> Expression TIMES Expression .)
+
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 28
+
+    (12) Expression -> Expression DIVIDE Expression .
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+    PLUS            reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    MINUS           reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    TIMES           reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    DIVIDE          reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    ENDMARKER       reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    IDENTIFIER      reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    PRINT           reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    NUMBER          reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    STRING          reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    LEFT_PAREN      reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+    RIGHT_PAREN     reduce using rule 12 (Expression -> Expression DIVIDE Expression .)
+
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 29
+
+    (8) Assignment -> IDENTIFIER EQUAL Expression .
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+  ! shift/reduce conflict for MINUS resolved as shift
+    ENDMARKER       reduce using rule 8 (Assignment -> IDENTIFIER EQUAL Expression .)
+    IDENTIFIER      reduce using rule 8 (Assignment -> IDENTIFIER EQUAL Expression .)
+    PRINT           reduce using rule 8 (Assignment -> IDENTIFIER EQUAL Expression .)
+    NUMBER          reduce using rule 8 (Assignment -> IDENTIFIER EQUAL Expression .)
+    STRING          reduce using rule 8 (Assignment -> IDENTIFIER EQUAL Expression .)
+    LEFT_PAREN      reduce using rule 8 (Assignment -> IDENTIFIER EQUAL Expression .)
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! MINUS           [ reduce using rule 8 (Assignment -> IDENTIFIER EQUAL Expression .) ]
+
+
+state 30
+
+    (18) PrintSomething -> PRINT LEFT_PAREN Expression . RIGHT_PAREN
+    (9) Expression -> Expression . PLUS Expression
+    (10) Expression -> Expression . MINUS Expression
+    (11) Expression -> Expression . TIMES Expression
+    (12) Expression -> Expression . DIVIDE Expression
+
+    RIGHT_PAREN     shift and go to state 32
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+
+state 31
+
+    (16) Expression -> LEFT_PAREN Expression RIGHT_PAREN .
+
+    PLUS            reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    MINUS           reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    TIMES           reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    DIVIDE          reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    ENDMARKER       reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    IDENTIFIER      reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    PRINT           reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    NUMBER          reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    STRING          reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    LEFT_PAREN      reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+    RIGHT_PAREN     reduce using rule 16 (Expression -> LEFT_PAREN Expression RIGHT_PAREN .)
+
+
+state 32
+
+    (18) PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .
+
+    ENDMARKER       reduce using rule 18 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    IDENTIFIER      reduce using rule 18 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    PRINT           reduce using rule 18 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    NUMBER          reduce using rule 18 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    STRING          reduce using rule 18 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    LEFT_PAREN      reduce using rule 18 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+    MINUS           reduce using rule 18 (PrintSomething -> PRINT LEFT_PAREN Expression RIGHT_PAREN .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for MINUS in state 7 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 29 resolved as shift
